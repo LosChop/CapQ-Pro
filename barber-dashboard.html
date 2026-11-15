@@ -10,294 +10,178 @@
 <link rel="stylesheet" href="assets/capq-brand.css">
 
 <style>
-:root{
+:root {
   --black:#101114;
-  --charcoal:#292D33;
-  --gold:#D6B45C;
-  --green:#16A77A;
-  --white:#F7F7F4;
-  --muted:#A9ADB5;
+  --charcoal:#292d33;
+  --gold:#d6b45c;
+  --green:#16a77a;
+  --white:#f7f7f4;
+  --muted:#a9adb5;
 }
-
-*{box-sizing:border-box}
-
-body{
+* {box-sizing:border-box}
+body {
   margin:0;
   background:var(--black);
   color:var(--white);
   font-family:Arial,Helvetica,sans-serif;
   line-height:1.5;
 }
-
-main{
-  max-width:900px;
-  margin:auto;
-  padding:25px 18px 65px;
-}
-
-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
-  padding-bottom:20px;
+main {max-width:900px;margin:auto;padding:25px 18px 65px}
+header {
+  display:flex;justify-content:space-between;
+  align-items:center;gap:15px;padding-bottom:20px;
   border-bottom:1px solid #393c42;
 }
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  color:white;
-  text-decoration:none;
+.brand {
+  display:flex;align-items:center;gap:12px;
+  color:white;text-decoration:none;
 }
-
-.brand-icon{
-  width:52px;
-  height:52px;
-  display:grid;
-  place-items:center;
-  background:#08090b;
-  color:var(--gold);
-  font-size:36px;
-  font-weight:900;
-  border:1px solid #786434;
-  border-radius:14px;
+.brand-icon {
+  width:52px;height:52px;display:grid;place-items:center;
+  background:#08090b;color:var(--gold);
+  font-size:36px;font-weight:900;
+  border:1px solid #786434;border-radius:14px;
 }
-
-.wordmark{width:145px;max-width:100%}
-
-.subtitle{
-  font-size:9px;
-  letter-spacing:2px;
-  color:var(--muted);
-}
-
-button{font:inherit;cursor:pointer}
-
-.signout,.secondary{
-  background:var(--charcoal);
-  color:white;
-  border:1px solid #50545b;
-  border-radius:9px;
+.wordmark {width:145px;max-width:100%}
+.subtitle {font-size:9px;letter-spacing:2px;color:var(--muted)}
+button {font:inherit;cursor:pointer}
+.signout,.secondary {
+  background:var(--charcoal);color:white;
+  border:1px solid #50545b;border-radius:9px;
   padding:10px 12px;
 }
-
-h1{
-  font-size:clamp(26px,5vw,36px);
-  margin:28px 0 5px;
+h1 {font-size:clamp(26px,5vw,36px);margin:28px 0 5px}
+h2 {font-size:23px;margin:0}
+.muted {color:var(--muted);font-size:14px}
+.message {
+  min-height:20px;color:var(--gold);margin:15px 0;
+  font-size:13px;white-space:pre-wrap;
 }
-
-h2{font-size:23px;margin:0}
-.muted{color:var(--muted);font-size:14px}
-
-.message{
-  min-height:20px;
-  color:var(--gold);
-  margin:15px 0;
-  font-size:13px;
-  white-space:pre-wrap;
+.stats {
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:12px;margin:25px 0;
 }
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-  margin:25px 0;
+.stat,.panel {
+  background:#1c1f24;border:1px solid #383c42;
+  border-radius:15px;padding:20px;
 }
-
-.stat,.panel{
-  background:#1c1f24;
-  border:1px solid #383c42;
-  border-radius:15px;
-  padding:20px;
-}
-
-.stat small{color:var(--muted);display:block}
-
-.stat strong{
-  display:block;
-  font-size:34px;
-  color:var(--gold);
+.stat small {color:var(--muted);display:block}
+.stat strong {
+  display:block;font-size:34px;color:var(--gold);
   margin-top:6px;
 }
-
-.stat.green strong{color:#66d8a7}
-.section{margin-top:30px}
-
-.section-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
+.stat.green strong {color:#66d8a7}
+.section {margin-top:30px}
+.section-head {
+  display:flex;align-items:center;
+  justify-content:space-between;gap:12px;
   margin-bottom:15px;
 }
-
-.pill{
-  background:#123e30;
-  color:#7ff0c3;
-  border-radius:20px;
-  padding:6px 10px;
-  font-size:11px;
+.pill {
+  background:#123e30;color:#7ff0c3;
+  border-radius:20px;padding:6px 10px;font-size:11px;
 }
-
-.card{
-  padding:18px;
-  background:#24272c;
-  border:1px solid #42464d;
-  border-radius:12px;
+.card {
+  padding:18px;background:#24272c;
+  border:1px solid #42464d;border-radius:12px;
   margin-top:12px;
 }
-
-.card-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
+.card-head {
+  display:flex;align-items:center;
+  justify-content:space-between;gap:12px;
 }
-
-.card strong{font-size:18px}
-
-.card p{
-  margin:7px 0 0;
-  color:var(--muted);
-  font-size:13px;
+.card strong {font-size:18px}
+.card p {margin:7px 0 0;color:var(--muted);font-size:13px}
+.tag {
+  color:#e8c96e;background:#40361e;
+  padding:5px 9px;border-radius:20px;font-size:11px;
 }
-
-.tag{
-  color:#e8c96e;
-  background:#40361e;
-  padding:5px 9px;
-  border-radius:20px;
-  font-size:11px;
+.tag.accepted {color:#7ff0c3;background:#123e30}
+.wait-label {
+  display:block;margin:15px 0 9px;
+  font-size:13px;font-weight:bold;
 }
-
-.tag.accepted{
-  color:#7ff0c3;
-  background:#123e30;
-}
-
-.wait-label{
-  display:block;
-  margin:15px 0 9px;
-  font-size:13px;
-  font-weight:bold;
-}
-
-.wait-options{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
+.wait-options {
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
   gap:8px;
 }
-
-.wait-btn{
-  background:#353a41;
-  color:white;
-  border:1px solid #66707b;
-  border-radius:9px;
-  padding:11px 6px;
-  font-size:13px;
+.wait-btn {
+  background:#353a41;color:white;
+  border:1px solid #66707b;border-radius:9px;
+  padding:11px 6px;font-size:13px;
 }
-
-.wait-btn.selected{
-  background:var(--gold);
-  color:#111;
-  border-color:var(--gold);
-  font-weight:bold;
+.wait-btn.selected {
+  background:var(--gold);color:#111;
+  border-color:var(--gold);font-weight:bold;
 }
-
-.primary{
-  display:block;
-  width:100%;
-  background:var(--green);
-  color:white;
-  border:0;
-  border-radius:9px;
-  padding:13px 18px;
-  font-weight:bold;
-  margin-top:12px;
+.primary {
+  display:block;width:100%;background:var(--green);
+  color:white;border:0;border-radius:9px;
+  padding:13px 18px;font-weight:bold;margin-top:12px;
 }
-
-.empty{
-  padding:22px;
-  border:1px dashed #45494f;
-  border-radius:12px;
-  color:var(--muted);
-  text-align:center;
-  font-size:14px;
+.empty {
+  padding:22px;border:1px dashed #45494f;
+  border-radius:12px;color:var(--muted);
+  text-align:center;font-size:14px;
 }
-
-.connect{
+.connect {
   border-color:#7d693a;
   background:linear-gradient(135deg,#27251e,#1c1f24);
 }
-
-.connect h2{color:var(--gold)}
-
-.connect-link{
-  display:inline-block;
-  background:var(--gold);
-  color:#111;
-  text-decoration:none;
-  font-weight:bold;
-  border-radius:9px;
-  padding:12px 17px;
-  margin-top:12px;
+.connect h2 {color:var(--gold)}
+.connect-actions {
+  display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;
 }
-
-.nav{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:35px;
+.connect-actions a,.connect-actions button {
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:45px;padding:11px 15px;
+  border-radius:9px;text-decoration:none;
+  font-size:14px;font-weight:bold;
 }
-
-.nav a{
-  color:white;
-  text-decoration:none;
-  background:var(--charcoal);
-  border:1px solid #44484e;
-  border-radius:9px;
-  padding:12px 15px;
-  font-size:13px;
+.connect-actions .edit {
+  background:var(--gold);color:#111;
+  border:1px solid var(--gold);
 }
-
-.note{
-  margin-top:25px;
-  font-size:12px;
-  color:var(--muted);
+.connect-actions .preview,.connect-actions .copy {
+  background:#292d33;color:white;
+  border:1px solid #69615a;
 }
-
-.account-diagnostic{
-  background:#24272c;
-  border:1px solid #7d693a;
-  border-radius:12px;
-  padding:16px;
-  margin:15px 0;
-  font-size:13px;
+.connect-url {
+  font-size:12px;color:var(--muted);
+  overflow-wrap:anywhere;margin-top:12px;
+}
+.connect-status {
+  min-height:20px;color:#7ff0c3;
+  font-size:13px;margin-top:9px;
+}
+.nav {
+  display:flex;gap:10px;flex-wrap:wrap;margin-top:35px;
+}
+.nav a {
+  color:white;text-decoration:none;background:var(--charcoal);
+  border:1px solid #44484e;border-radius:9px;
+  padding:12px 15px;font-size:13px;
+}
+.note {margin-top:25px;font-size:12px;color:var(--muted)}
+.account-diagnostic {
+  background:#24272c;border:1px solid #7d693a;
+  border-radius:12px;padding:16px;margin:15px 0;
+  font-size:13px;overflow-wrap:anywhere;
+}
+.account-diagnostic strong {color:var(--gold)}
+.account-diagnostic code {
+  display:block;margin:8px 0;color:#fff;
   overflow-wrap:anywhere;
 }
-
-.account-diagnostic strong{color:var(--gold)}
-
-.account-diagnostic code{
-  display:block;
-  margin:8px 0;
-  color:#fff;
-  overflow-wrap:anywhere;
-}
-
-[hidden]{display:none!important}
-button:disabled{opacity:.55;cursor:wait}
-
-@media(max-width:550px){
-  .stat{padding:14px}
-  .stat strong{font-size:28px}
-  .brand-icon{width:44px;height:44px}
-  .wordmark{width:115px}
-  .wait-options{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
+[hidden] {display:none!important}
+button:disabled {opacity:.55;cursor:not-allowed}
+@media(max-width:550px) {
+  .stat {padding:14px}
+  .stat strong {font-size:28px}
+  .brand-icon {width:44px;height:44px}
+  .wordmark {width:115px}
+  .wait-options {grid-template-columns:repeat(2,minmax(0,1fr))}
+  .connect-actions a,.connect-actions button {width:100%}
 }
 </style>
 </head>
@@ -309,15 +193,11 @@ button:disabled{opacity:.55;cursor:wait}
   <a href="index.html" class="brand">
     <div class="brand-icon">C</div>
     <div>
-      <img
-        src="assets/capq-wordmark.svg"
-        alt="CAPQ Pro"
-        class="wordmark"
-      >
+      <img src="assets/capq-wordmark.svg"
+           alt="CAPQ Pro" class="wordmark">
       <div class="subtitle">BARBER DASHBOARD</div>
     </div>
   </a>
-
   <button id="signout" class="signout" type="button">
     Sign Out
   </button>
@@ -328,27 +208,15 @@ button:disabled{opacity:.55;cursor:wait}
   <p class="muted" id="shopLabel">
     Checking your barber account...
   </p>
-  <p
-    class="message"
-    id="message"
-    role="status"
-    aria-live="polite"
-  ></p>
+  <p class="message" id="message"
+     role="status" aria-live="polite"></p>
 </section>
 
-<section
-  id="diagnostic"
-  class="account-diagnostic"
-  hidden
->
+<section id="diagnostic" class="account-diagnostic" hidden>
   <strong>Account Connection Check</strong>
   <p id="diagnosticText"></p>
   <code id="diagnosticId"></code>
-  <button
-    class="secondary"
-    type="button"
-    id="retryButton"
-  >
+  <button class="secondary" type="button" id="retryButton">
     Retry Connection
   </button>
 </section>
@@ -385,17 +253,32 @@ button:disabled{opacity:.55;cursor:wait}
   <section class="section panel connect">
     <h2>My Barber Connect</h2>
     <p class="muted">
-      Manage your haircut portfolio, photos,
-      Booksy link, social media, and
-      shareable barber profile.
+      Manage your haircut portfolio, profile pictures,
+      Booksy booking link, social media and shareable
+      digital barber profile.
     </p>
 
-    <a
-      class="connect-link"
-      href="barber-profile-edit.html"
-    >
-      Manage My Barber Connect
-    </a>
+    <div class="connect-actions">
+      <a class="edit" href="barber-profile-edit.html">
+        Edit My Profile
+      </a>
+
+      <a class="preview" id="previewConnect"
+         target="_blank" rel="noopener noreferrer" hidden>
+        👁 Preview My Page
+      </a>
+
+      <button class="copy" id="copyConnect"
+              type="button" disabled>
+        Copy My Profile Link
+      </button>
+    </div>
+
+    <div class="connect-url" id="connectUrl">
+      Checking your public profile...
+    </div>
+    <div class="connect-status" id="connectStatus"
+         role="status" aria-live="polite"></div>
   </section>
 
   <nav class="nav">
@@ -405,9 +288,9 @@ button:disabled{opacity:.55;cursor:wait}
   </nav>
 
   <p class="note">
-    CAPQ Pro barber dashboard. Walk-ins are assigned
-    to the first available barber; customers do not
-    select a preferred barber in the queue.
+    CAPQ Pro Barber Dashboard. Walk-ins are assigned
+    to the first available barber. Customers do not
+    select a preferred barber in the walk-in queue.
   </p>
 
 </div>
@@ -429,44 +312,45 @@ let shop=null;
 let loading=false;
 let accepting=false;
 let timer=null;
+let connectUrl="";
+let loadVersion=0;
 
 const selections=new Map();
 
-function message(text){
+function message(text) {
   $("message").textContent=text;
 }
 
-function showDiagnostic(text,userId){
+function showDiagnostic(text,userId) {
   $("diagnostic").hidden=false;
   $("diagnosticText").textContent=text;
   $("diagnosticId").textContent=
     userId ? "Signed-in User ID: "+userId : "";
 }
 
-function hideDiagnostic(){
+function hideDiagnostic() {
   $("diagnostic").hidden=true;
 }
 
-function empty(text){
+function empty(text) {
   const el=document.createElement("div");
   el.className="empty";
   el.textContent=text;
   return el;
 }
 
-function p(text){
+function p(text) {
   const el=document.createElement("p");
   el.textContent=text;
   return el;
 }
 
-function cardHead(customer){
+function cardHead(customer) {
   const head=document.createElement("div");
   head.className="card-head";
 
   const name=document.createElement("strong");
-  name.textContent=
-    customer.customer_name||"Customer";
+  name.textContent=customer.customer_name||"Customer";
 
   const tag=document.createElement("span");
   tag.className="tag"+
@@ -477,9 +361,90 @@ function cardHead(customer){
   return head;
 }
 
-async function initialize(){
+async function loadConnectProfile() {
+  connectUrl="";
+  $("previewConnect").hidden=true;
+  $("previewConnect").removeAttribute("href");
+  $("copyConnect").disabled=true;
+  $("connectStatus").textContent="";
+  $("connectUrl").textContent="Checking your public profile...";
+
+  if(!barber)return;
+
+  try {
+    const {data,error}=await supabase
+      .from("barber_connect_profiles")
+      .select("slug")
+      .eq("barber_id",barber.id)
+      .maybeSingle();
+
+    if(error)throw error;
+
+    const slug=typeof data?.slug==="string"
+      ? data.slug.trim()
+      : "";
+
+    if(!slug) {
+      $("connectUrl").textContent=
+        "Your public Connect page is not set up yet. "+
+        "Select Edit My Profile to get started.";
+      return;
+    }
+
+    const url=new URL("barber-profile.html",location.href);
+    url.searchParams.set("slug",slug);
+
+    connectUrl=url.href;
+    $("previewConnect").href=connectUrl;
+    $("previewConnect").hidden=false;
+    $("copyConnect").disabled=false;
+    $("connectUrl").textContent=connectUrl;
+
+  }catch(err) {
+    $("connectUrl").textContent=
+      "Unable to load your public profile link. "+
+      "You can still edit your profile.";
+  }
+}
+
+$("copyConnect").addEventListener("click",async()=>{
+  if(!connectUrl)return;
+
+  try {
+    if(navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(connectUrl);
+    } else {
+      const field=document.createElement("textarea");
+      field.value=connectUrl;
+      field.style.position="fixed";
+      field.style.opacity="0";
+      document.body.appendChild(field);
+      field.select();
+
+      const copied=document.execCommand("copy");
+      field.remove();
+
+      if(!copied)throw new Error("Copy unavailable");
+    }
+
+    $("connectStatus").textContent=
+      "Your Barber Connect link has been copied!";
+
+  }catch(err) {
+    $("connectStatus").textContent=
+      "Automatic copy was unavailable. "+
+      "Press and hold the profile link above to copy it.";
+  }
+});
+
+async function initialize() {
+  const version=++loadVersion;
   barber=null;
   shop=null;
+  loading=false;
+  accepting=false;
+  connectUrl="";
+
   $("barberContent").hidden=true;
   $("heading").textContent="Barber Dashboard";
   $("shopLabel").textContent=
@@ -487,16 +452,18 @@ async function initialize(){
   message("");
   hideDiagnostic();
 
-  if(timer){
+  if(timer) {
     clearInterval(timer);
     timer=null;
   }
 
-  try{
+  try {
     const {data:{user},error:authError}=
       await supabase.auth.getUser();
 
-    if(authError){
+    if(version!==loadVersion)return;
+
+    if(authError) {
       showDiagnostic(
         "Authentication error: "+authError.message
       );
@@ -504,7 +471,7 @@ async function initialize(){
       return;
     }
 
-    if(!user){
+    if(!user) {
       location.replace("login.html");
       return;
     }
@@ -517,7 +484,9 @@ async function initialize(){
         .limit(1)
         .maybeSingle();
 
-    if(barberError){
+    if(version!==loadVersion)return;
+
+    if(barberError) {
       showDiagnostic(
         "Supabase could not read the barber profile. "+
         "Error: "+barberError.message+
@@ -528,22 +497,14 @@ async function initialize(){
       return;
     }
 
-    if(!profile){
+    if(!profile) {
       $("shopLabel").textContent=
         "Barber account not found for this login.";
 
-      const expectedId=
-        "a759cc55-8faf-494c-9a5c-b78583dd4b27";
-
-      const sameAccount=user.id===expectedId;
-
       showDiagnostic(
-        sameAccount
-          ? "This is the verified Carlos barber login, "+
-            "but the website received no barber row. "+
-            "We need to inspect the live query."
-          : "This browser is signed in with a different "+
-            "account. Sign out and use your barber login.",
+        "No barber record is linked to this signed-in "+
+        "account. Ask the shop owner to check the "+
+        "invitation and barber roster.",
         user.id
       );
 
@@ -563,7 +524,9 @@ async function initialize(){
         .eq("id",barber.shop_id)
         .maybeSingle();
 
-    if(shopError){
+    if(version!==loadVersion)return;
+
+    if(shopError) {
       showDiagnostic(
         "Barber found, but the shop query failed: "+
         shopError.message,
@@ -573,7 +536,7 @@ async function initialize(){
       return;
     }
 
-    if(!shopData){
+    if(!shopData) {
       showDiagnostic(
         "Your barber record exists, but the "+
         "linked shop was not returned.",
@@ -596,13 +559,20 @@ async function initialize(){
     hideDiagnostic();
     $("barberContent").hidden=false;
 
-    await loadQueue();
+    await Promise.all([
+      loadQueue(),
+      loadConnectProfile()
+    ]);
+
+    if(version!==loadVersion)return;
 
     timer=setInterval(()=>{
       if(!document.hidden)loadQueue();
     },5000);
 
-  }catch(err){
+  }catch(err) {
+    if(version!==loadVersion)return;
+
     showDiagnostic(
       "Unexpected dashboard error: "+
       (err?.message||String(err))
@@ -611,12 +581,12 @@ async function initialize(){
   }
 }
 
-async function loadQueue(){
+async function loadQueue() {
   if(!barber||!shop||loading||accepting)return;
 
   loading=true;
 
-  try{
+  try {
     const {data,error}=await supabase
       .from("capq_queue")
       .select(
@@ -650,13 +620,13 @@ async function loadQueue(){
     waitingList.replaceChildren();
     acceptedList.replaceChildren();
 
-    if(!waiting.length){
+    if(!waiting.length) {
       waitingList.appendChild(
         empty("No customers waiting right now.")
       );
     }
 
-    for(const customer of waiting){
+    for(const customer of waiting) {
       const card=document.createElement("div");
       card.className="card";
 
@@ -675,7 +645,7 @@ async function loadQueue(){
 
       const selected=selections.get(customer.id)||15;
 
-      for(const minutes of [5,10,15,20]){
+      for(const minutes of [5,10,15,20]) {
         const btn=document.createElement("button");
         btn.type="button";
         btn.className="wait-btn"+
@@ -710,9 +680,8 @@ async function loadQueue(){
         accept.textContent="Accepting...";
         message("");
 
-        try{
-          const minutes=
-            selections.get(customer.id)||15;
+        try {
+          const minutes=selections.get(customer.id)||15;
 
           const {data:result,error}=
             await supabase.rpc(
@@ -725,7 +694,7 @@ async function loadQueue(){
 
           if(error)throw error;
 
-          if(result===false){
+          if(result===false) {
             throw new Error(
               "Customer was not accepted. "+
               "They may have already been claimed "+
@@ -740,20 +709,18 @@ async function loadQueue(){
             minutes+" minutes."
           );
 
-        }catch(err){
+        }catch(err) {
           message(
             "Unable to accept customer: "+
             (err?.message||String(err))
           );
 
-        }finally{
+        }finally {
           accepting=false;
           accept.disabled=false;
           accept.textContent="Accept Customer";
 
-          // Allow any active queue read to finish.
-          // Then refresh after accepting is complete.
-          while(loading){
+          while(loading) {
             await new Promise(resolve=>
               setTimeout(resolve,50)
             );
@@ -767,7 +734,7 @@ async function loadQueue(){
       waitingList.appendChild(card);
     }
 
-    if(!accepted.length){
+    if(!accepted.length) {
       acceptedList.appendChild(
         empty(
           "You have no accepted customers "+
@@ -776,7 +743,7 @@ async function loadQueue(){
       );
     }
 
-    for(const customer of accepted){
+    for(const customer of accepted) {
       const card=document.createElement("div");
       card.className="card";
 
@@ -796,13 +763,13 @@ async function loadQueue(){
       acceptedList.appendChild(card);
     }
 
-  }catch(err){
+  }catch(err) {
     message(
       "Queue error: "+
       (err?.message||String(err))
     );
 
-  }finally{
+  }finally {
     loading=false;
   }
 }
@@ -815,7 +782,7 @@ $("retryButton").addEventListener(
 $("signout").addEventListener("click",async()=>{
   const {error}=await supabase.auth.signOut();
 
-  if(error){
+  if(error) {
     message(
       "Unable to sign out: "+error.message
     );
@@ -826,10 +793,8 @@ $("signout").addEventListener("click",async()=>{
 });
 
 await initialize();
-
 </script>
 
 <script src="assets/capq-nav.js" defer></script>
-
 </body>
 </html>
