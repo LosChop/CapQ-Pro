@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101114">
+<title>Accept Barber Invitation | CAPQ Pro</title>
+<link rel="icon" href="assets/capq-mark.svg">
+<style>
+:root{
+  --bg:#101114;
+  --panel:#1c1f24;
+  --gold:#d6b45c;
+  --muted:#a9adb5;
+  --green:#16a77a;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  min-height:100vh;
+  background:var(--bg);
+  color:#f7f7f4;
+  font-family:Arial,sans-serif;
+  display:grid;
+  place-items:center;
+  padding:20px;
+}
+.card{
+  width:100%;
+  max-width:440px;
+  padding:30px;
+  background:var(--panel);
+  border:1px solid #444850;
+  border-radius:18px;
+}
+.brand{
+  color:var(--gold);
+  font-size:27px;
+  font-weight:900;
+  text-align:center;
+}
+h1{text-align:center;font-size:25px}
+.intro{
+  text-align:center;
+  color:var(--muted);
+  line-height:1.6;
+}
+label{
+  display:block;
+  margin:20px 0 7px;
+  font-size:14px;
+  font-weight:bold;
+}
+input{
+  width:100%;
+  background:#101114;
+  border:1px solid #555a63;
+  color:white;
+  padding:14px;
+  border-radius:9px;
+  font-size:16px;
+}
+button{
+  width:100%;
+  background:var(--gold);
+  color:#101114;
+  border:0;
+  padding:15px;
+  border-radius:9px;
+  font-size:15px;
+  font-weight:bold;
+  margin-top:22px;
+  cursor:pointer;
+}
+button:disabled{opacity:.6}
+.message{
+  margin:20px 0;
+  color:var(--gold);
+  text-align:center;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  line-height:1.5;
+}
+.error{color:#ff9999}
+.success{color:#8fe0a5}
+a{color:var(--gold)}
+.back{
+  display:block;
+  text-align:center;
+  margin-top:20px;
+  font-size:13px;
+}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+
+<main class="card">
+  <div class="brand">CAPQ PRO</div>
+
+  <h1>Welcome to the Team</h1>
+
+  <p class="intro">
+    You've been invited to join a barbershop on
+    CAPQ Pro. Set your password to activate
+    your Barber Portal.
+  </p>
+
+  <div id="message" class="message" role="status"
+       aria-live="polite">
+    Verifying your invitation...
+  </div>
+
+  <form id="setupForm" hidden>
+    <label for="password">Create Password</label>
+    <input
+      id="password"
+      type="password"
+      autocomplete="new-password"
+      minlength="8"
+      required
+      placeholder="At least 8 characters"
+    >
+
+    <label for="confirmPassword">
+      Confirm Password
+    </label>
+    <input
+      id="confirmPassword"
+      type="password"
+      autocomplete="new-password"
+      minlength="8"
+      required
+      placeholder="Enter password again"
+    >
+
+    <button id="activateButton" type="submit">
+      Activate My Barber Account
+    </button>
+  </form>
+
+  <a class="back" href="login.html">
+    Already activated? Sign In
+  </a>
+</main>
+
+<script type="module">
+import {createClient} from
+"https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+const supabase=createClient(
+  "https://nfazsevnpfmabsipkrrh.supabase.co",
+  "sb_publishable_FtcxTtmcHvtyu3m2KJRjqA_3Nzkk2La",
+  {
+    auth:{
+      detectSessionInUrl:true,
+      persistSession:true,
+      autoRefreshToken:true
+    }
+  }
+);
+
+const $=id=>document.getElementById(id);
+const form=$("setupForm");
+const message=$("message");
+const button=$("activateButton");
+
+function showMessage(text,type=""){
+  message.textContent=text;
+  message.className="message "+type;
+}
+
+async function verifyBarber(user){
+  if(!user){
+    throw new Error("No active invitation session.");
+  }
+
+  const {data,error}=await supabase
+    .from("barbers")
+    .select("id,name")
+    .eq("user_id",user.id)
+    .limit(1);
+
+  if(error)throw error;
+
+  if(!data||data.length===0){
+    throw new Error(
+      "Your login is not linked to a barber record. "+
+      "Please contact your shop owner."
+    );
+  }
+
+  return data[0];
+}
+
+async function initialize(){
+  try{
+    const params=new URLSearchParams(
+      window.location.search
+    );
+
+    const hashParams=new URLSearchParams(
+      window.location.hash.slice(1)
+    );
+
+    const authError=
+      params.get("error_description")||
+      hashParams.get("error_description");
+
+    if(authError){
+      throw new Error(authError);
+    }
+
+    const tokenHash=params.get("token_hash");
+    const tokenType=params.get("type");
+
+    if(tokenHash){
+      const {error}=await supabase.auth.verifyOtp({
+        token_hash:tokenHash,
+        type:tokenType==="recovery"
+          ?"recovery"
+          :"invite"
+      });
+
+      if(error)throw error;
+    }else if(params.get("code")){
+      const {error}=await supabase.auth
+        .exchangeCodeForSession(
+          params.get("code")
+        );
+
+      if(error){
+        const {data}=await supabase.auth
+          .getSession();
+
+        if(!data.session)throw error;
+      }
+    }
+
+    const {data,error}=await supabase.auth
+      .getUser();
+
+    if(error)throw error;
+
+    const user=data?.user;
+
+    if(!user){
+      throw new Error(
+        "Your invitation link is expired or invalid. "+
+        "Ask your shop owner to send a new invitation."
+      );
+    }
+
+    const barber=await verifyBarber(user);
+
+    history.replaceState(
+      null,
+      "",
+      window.location.pathname
+    );
+
+    showMessage(
+      "Welcome, "+(barber.name||"Barber")+
+      "! Create your password below.",
+      "success"
+    );
+
+    form.hidden=false;
+
+  }catch(error){
+    console.error(error);
+    showMessage(
+      error.message||
+      "Unable to verify your invitation.",
+      "error"
+    );
+  }
+}
+
+form.addEventListener("submit",async event=>{
+  event.preventDefault();
+
+  const password=$("password").value;
+  const confirm=$("confirmPassword").value;
+
+  if(password.length<8){
+    showMessage(
+      "Password must contain at least 8 characters.",
+      "error"
+    );
+    return;
+  }
+
+  if(password!==confirm){
+    showMessage(
+      "Passwords do not match.",
+      "error"
+    );
+    return;
+  }
+
+  button.disabled=true;
+  button.textContent="Activating Account...";
+
+  try{
+    const {data:authData,error:authError}=
+      await supabase.auth.getUser();
+
+    if(authError)throw authError;
+
+    await verifyBarber(authData.user);
+
+    const {error}=await supabase.auth.updateUser({
+      password
+    });
+
+    if(error)throw error;
+
+    showMessage(
+      "Your Barber Portal is activated! "+
+      "Opening your dashboard...",
+      "success"
+    );
+
+    window.location.replace(
+      "barber-dashboard.html"
+    );
+
+  }catch(error){
+    console.error(error);
+    showMessage(
+      "Unable to activate: "+error.message,
+      "error"
+    );
+
+    button.disabled=false;
+    button.textContent=
+      "Activate My Barber Account";
+  }
+});
+
+initialize();
+</script>
+</body>
+</html>
