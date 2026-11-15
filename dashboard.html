@@ -3,51 +3,43 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#101114">
 <title>CAPQ Pro | Owner Dashboard</title>
-
 <link rel="icon" type="image/svg+xml" href="assets/capq-mark.svg">
 <link rel="stylesheet" href="assets/capq-brand.css">
-
 <style>
 :root {
   --black:#101114;
-  --charcoal:#292D33;
-  --gold:#D6B45C;
-  --green:#16A77A;
-  --white:#F7F7F4;
-  --muted:#A9ADB5;
+  --charcoal:#292d33;
+  --gold:#d6b45c;
+  --green:#16a77a;
+  --white:#f7f7f4;
+  --muted:#a9adb5;
 }
-
-* {
-  box-sizing:border-box;
-}
-
+* {box-sizing:border-box}
 body {
   margin:0;
   background:var(--black);
   color:var(--white);
-  font-family:Arial,Helvetica,sans-serif;
-  line-height:1.5;
+  font:16px/1.5 Arial,Helvetica,sans-serif;
 }
-
 main {
-  max-width:700px;
+  max-width:1050px;
   margin:auto;
-  padding:25px 18px 60px;
+  padding:25px 18px 65px;
 }
-
-header {
+header,.section-header,.customer-top {
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:15px;
-  margin-bottom:35px;
+  gap:12px;
+}
+header {
   padding-bottom:20px;
   border-bottom:1px solid #35383d;
+  margin-bottom:30px;
 }
-
 .brand {
   display:flex;
   align-items:center;
@@ -55,180 +47,195 @@ header {
   text-decoration:none;
   color:white;
 }
-
 .logo-icon {
-  width:54px;
-  height:54px;
-  background:#08090b;
+  width:48px;
+  height:48px;
   border:1px solid #786434;
-  border-radius:15px;
+  border-radius:13px;
   display:grid;
   place-items:center;
-}
-
-.logo-icon span {
-  font-size:40px;
-  font-weight:900;
   color:var(--gold);
+  font-size:32px;
+  font-weight:900;
 }
-
-.capq-pro-wordmark {
-  width:160px;
+.wordmark {
+  width:150px;
   max-width:100%;
-  height:auto;
-  display:block;
 }
-
 .subtitle {
-  color:var(--muted);
   font-size:9px;
+  color:var(--muted);
   letter-spacing:2px;
-  margin-top:5px;
 }
-
+.header-actions {
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
 .demo-badge {
   color:var(--green);
   border:1px solid #286b55;
-  padding:6px 11px;
   border-radius:20px;
+  padding:6px 10px;
   font-size:11px;
-  white-space:nowrap;
 }
-
-.welcome {
-  margin-bottom:25px;
+button,.btn {
+  cursor:pointer;
+  border:1px solid #555;
+  background:var(--charcoal);
+  color:white;
+  padding:11px 14px;
+  border-radius:9px;
+  font:inherit;
+  font-size:13px;
+  text-decoration:none;
+  text-align:center;
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
 }
-
+.btn-gold {
+  background:var(--gold);
+  color:#111;
+  border-color:var(--gold);
+  font-weight:bold;
+}
+.btn-outline {
+  color:var(--gold);
+  border-color:var(--gold);
+  background:transparent;
+}
+button:disabled {opacity:.6}
 .welcome h1 {
-  font-size:clamp(27px,5vw,36px);
-  margin:0 0 7px;
+  font-size:clamp(27px,5vw,38px);
+  margin:0 0 5px;
 }
-
 .welcome p {
   color:var(--muted);
   margin:0;
-  font-size:14px;
 }
-
 .stats {
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:repeat(4,minmax(0,1fr));
   gap:12px;
   margin:25px 0 35px;
 }
-
-.stat {
+.stat,.customer,.barber-card {
   background:#1c1f24;
   border:1px solid #383c42;
   border-radius:14px;
   padding:18px;
 }
-
 .stat small {
   color:var(--muted);
   font-size:12px;
 }
-
 .stat strong {
   display:block;
-  font-size:34px;
+  font-size:32px;
   color:var(--gold);
-  margin-top:6px;
 }
-
-.stat.available strong {
-  color:var(--green);
-}
-
+.stat.available strong {color:var(--green)}
 .section-header {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-  margin-bottom:15px;
+  margin:30px 0 16px;
+  flex-wrap:wrap;
 }
-
-h2 {
-  font-size:23px;
-  margin:0;
-}
-
+h2 {font-size:23px;margin:0}
 .queue-label {
-  font-size:11px;
   color:var(--green);
   background:#123e30;
   border-radius:20px;
   padding:6px 10px;
+  font-size:11px;
 }
-
-.customer {
-  background:#1c1f24;
-  border:1px solid #383c42;
-  border-radius:15px;
-  padding:20px;
-  margin:12px 0;
-}
-
-.customer-top {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-  margin-bottom:12px;
-}
-
-.customer strong {
-  font-size:18px;
-}
-
+.customer {margin:12px 0}
+.customer strong {font-size:18px}
 .customer p {
-  color:var(--muted);
   font-size:13px;
-  margin:6px 0;
+  color:var(--muted);
+  margin:7px 0;
 }
-
-.status {
+.status,.availability {
   display:inline-block;
-  border-radius:20px;
   padding:6px 10px;
+  border-radius:20px;
   font-size:11px;
   font-weight:bold;
-  white-space:nowrap;
 }
-
-.status.waiting {
+.status.waiting,.availability {
   color:#e8c96e;
   background:#40361e;
 }
-
-.status.accepted {
+.status.accepted,.availability.walkin {
   color:#6de6b4;
   background:#123e30;
 }
-
-.empty {
-  text-align:center;
-  color:var(--muted);
-  padding:35px 15px;
-  background:#1c1f24;
-  border:1px dashed #45494f;
-  border-radius:14px;
+.availability.unavailable {
+  color:#ff9999;
+  background:#3b2528;
 }
-
 .message {
   color:#e8c96e;
   font-size:13px;
   min-height:20px;
-  margin:12px 0;
 }
-
+.empty {
+  text-align:center;
+  color:var(--muted);
+  padding:30px 15px;
+  border:1px dashed #45494f;
+  border-radius:14px;
+}
+.barber-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+.barber-card {
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.barber-head {
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+.avatar {
+  width:65px;
+  height:65px;
+  border:2px solid var(--gold);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  flex-shrink:0;
+  overflow:hidden;
+  color:var(--gold);
+  font-size:22px;
+  font-weight:bold;
+}
+.avatar img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.barber-name {
+  font-weight:bold;
+  overflow-wrap:anywhere;
+}
+.barber-actions {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:auto;
+}
+.barber-actions .wide {grid-column:1/-1}
 .nav {
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:repeat(3,minmax(0,1fr));
   gap:10px;
   margin-top:35px;
 }
-
 .nav a {
   text-align:center;
   text-decoration:none;
@@ -239,72 +246,26 @@ h2 {
   border-radius:9px;
   font-size:13px;
 }
-
 .nav a.manage-link {
   border-color:#786434;
   color:var(--gold);
 }
-
 .note {
   color:var(--muted);
   font-size:12px;
   text-align:center;
   margin-top:25px;
 }
-
-.signout {
-  background:#292D33;
-  color:white;
-  border:0;
-  border-radius:9px;
-  padding:9px 12px;
-  cursor:pointer;
+#dashboardContent[hidden] {display:none}
+@media(max-width:750px) {
+  .barber-grid {grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-
-.header-actions {
-  display:flex;
-  gap:8px;
-  align-items:center;
-}
-
-@media(max-width:480px) {
-  .stats {
-    gap:8px;
-  }
-
-  .stat {
-    padding:13px 10px;
-  }
-
-  .stat strong {
-    font-size:28px;
-  }
-
-  .stat small {
-    font-size:10px;
-  }
-
-  .logo-icon {
-    width:46px;
-    height:46px;
-  }
-
-  .logo-icon span {
-    font-size:35px;
-  }
-
-  .customer {
-    padding:16px;
-  }
-
-  .nav a {
-    font-size:12px;
-  }
-
-  .header-actions {
-    flex-wrap:wrap;
-    justify-content:flex-end;
-  }
+@media(max-width:580px) {
+  .stats {grid-template-columns:repeat(2,1fr)}
+  .barber-grid {grid-template-columns:1fr}
+  .nav {grid-template-columns:repeat(2,1fr)}
+  header {flex-wrap:wrap}
+  .stat strong {font-size:28px}
 }
 </style>
 </head>
@@ -314,27 +275,17 @@ h2 {
 
 <header>
   <a href="index.html" class="brand">
-    <div class="logo-icon" aria-hidden="true">
-      <span>C</span>
-    </div>
-
+    <div class="logo-icon">C</div>
     <div>
-      <img
-        class="capq-pro-wordmark"
-        src="assets/capq-wordmark.svg"
-        alt="CAPQ Pro"
-      >
+      <img class="wordmark"
+           src="assets/capq-wordmark.svg"
+           alt="CAPQ Pro">
       <div class="subtitle">BUILT FOR BARBERS</div>
     </div>
   </a>
-
   <div class="header-actions">
     <span class="demo-badge">LIVE TEST</span>
-    <button
-      class="signout"
-      id="signOutButton"
-      type="button"
-    >
+    <button id="signOutButton" type="button">
       Sign Out
     </button>
   </div>
@@ -342,25 +293,30 @@ h2 {
 
 <section class="welcome">
   <h1>Owner Dashboard</h1>
-  <p id="shopName">
-    Connecting to your shop...
-  </p>
+  <p id="shopName">Verifying shop access...</p>
 </section>
+
+<p id="message" class="message"
+   role="status" aria-live="polite"></p>
+
+<div id="dashboardContent" hidden>
 
 <section class="stats">
   <div class="stat capq-panel-border">
     <small>Waiting</small>
     <strong id="waitingCount">0</strong>
   </div>
-
   <div class="stat capq-panel-border">
     <small>Accepted</small>
     <strong id="acceptedCount">0</strong>
   </div>
-
   <div class="stat available">
     <small>Accepted Today</small>
     <strong id="todayCount">0</strong>
+  </div>
+  <div class="stat">
+    <small>Shop Barbers</small>
+    <strong id="barberCount">0</strong>
   </div>
 </section>
 
@@ -369,40 +325,44 @@ h2 {
     <h2>Customer Queue</h2>
     <span class="queue-label">● Live Queue</span>
   </div>
-
-  <p
-    id="message"
-    class="message"
-    role="status"
-    aria-live="polite"
-  ></p>
-
   <div id="customerList"></div>
+</section>
+
+<section>
+  <div class="section-header">
+    <h2>Shop Barber Overview</h2>
+    <a class="btn btn-gold"
+       href="barber-management.html">
+      Manage Barbers
+    </a>
+  </div>
+  <p id="barberMessage" class="message"></p>
+  <div id="barberGrid" class="barber-grid"></div>
 </section>
 
 <nav class="nav">
   <a href="index.html">Home</a>
-
   <a href="checkin.html">Check-In</a>
-
   <a href="barber-management.html" class="manage-link">
     Manage Barbers
   </a>
-
-  <a href="dashboard.html">Dashboard</a>
+  <a href="barbers.html">Public Directory</a>
+  <a href="dashboard.html">Refresh Dashboard</a>
+  <a href="login.html">Login</a>
 </nav>
 
 <p class="note">
-  Shop-wide queue overview.
-  Barbers accept customers from their own dashboard.
-  SMS notifications are not connected yet.
+  Shop-wide queue overview. Barbers accept customers
+  from their own dashboard. SMS notifications
+  are not connected yet.
 </p>
 
+</div>
 </main>
 
 <script type="module">
-import { createClient } from
-  "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+import {createClient} from
+"https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
 const SUPABASE_URL =
   "https://nfazsevnpfmabsipkrrh.supabase.co";
@@ -413,167 +373,159 @@ const SUPABASE_KEY =
 const SHOP_ID =
   "061c8b27-0d31-404a-b227-2839639acb35";
 
-const supabase = createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
+const supabase=createClient(
+  SUPABASE_URL,SUPABASE_KEY
 );
 
-const list =
-  document.getElementById("customerList");
+const $=id=>document.getElementById(id);
+let ready=false;
+let loading=false;
+let loadingBarbers=false;
 
-const message =
-  document.getElementById("message");
-
-let ready = false;
-let loading = false;
-let shopName = "";
-
-function setMessage(text) {
-  message.textContent = text;
+function setMessage(text){
+  $("message").textContent=text;
 }
 
-function startOfToday() {
-  const date = new Date();
-  date.setHours(0, 0, 0, 0);
-  return date.toISOString();
+function startOfToday(){
+  const d=new Date();
+  d.setHours(0,0,0,0);
+  return d.toISOString();
 }
 
-function showEmpty(text) {
-  list.replaceChildren();
-
-  const empty = document.createElement("div");
-  empty.className = "empty";
-  empty.textContent = text;
-
-  list.appendChild(empty);
+function empty(container,text){
+  container.replaceChildren();
+  const el=document.createElement("div");
+  el.className="empty";
+  el.textContent=text;
+  container.appendChild(el);
 }
 
-async function verifyOwner() {
-  const {
-    data: { user },
-    error: authError
-  } = await supabase.auth.getUser();
+function initials(name){
+  return (name||"B").trim()
+    .split(/\s+/).slice(0,2)
+    .map(s=>s.charAt(0)).join("").toUpperCase();
+}
 
-  if (authError || !user) {
+function validHttps(url){
+  if(!url)return false;
+  try {
+    return new URL(url).protocol==="https:";
+  } catch {
+    return false;
+  }
+}
+
+function availabilityLabel(mode){
+  switch(mode){
+    case "walk_ins_only":return "Walk-Ins Available";
+    case "appointments_only":return "Appointments Only";
+    case "both":return "Walk-Ins & Appointments";
+    case "unavailable":return "Currently Unavailable";
+    default:return "Contact for Availability";
+  }
+}
+
+async function verifyOwner(){
+  const {data:{user},error:authError}=
+    await supabase.auth.getUser();
+
+  if(authError||!user){
     window.location.replace("login.html");
     return false;
   }
 
-  const { data: shop, error } = await supabase
+  const {data:shop,error}=await supabase
     .from("barber_shops")
     .select("id,name")
-    .eq("id", SHOP_ID)
-    .eq("owner_id", user.id)
+    .eq("id",SHOP_ID)
+    .eq("owner_id",user.id)
     .maybeSingle();
 
-  if (error || !shop) {
-    setMessage(
-      error
-        ? "Shop access error: " + error.message
-        : "Your account is not assigned to this shop."
-    );
-
-    showEmpty("Shop access unavailable.");
+  if(error||!shop){
+    setMessage(error
+      ?"Shop access error: "+error.message
+      :"Your account is not assigned to this shop.");
     return false;
   }
 
-  shopName = shop.name;
+  $("shopName").textContent=
+    shop.name+" · Owner Dashboard";
 
-  document.getElementById("shopName").textContent =
-    shopName + " · Owner Dashboard";
-
+  $("dashboardContent").hidden=false;
   return true;
 }
 
-function render(customers, acceptedToday, barberNames) {
-  const waiting = customers.filter(
-    c => c.status === "Waiting"
-  ).length;
+function renderQueue(customers,acceptedToday,barberNames){
+  $("waitingCount").textContent=
+    customers.filter(c=>c.status==="Waiting").length;
 
-  const accepted = customers.filter(
-    c => c.status === "Accepted"
-  ).length;
+  $("acceptedCount").textContent=
+    customers.filter(c=>c.status==="Accepted").length;
 
-  document.getElementById("waitingCount").textContent =
-    waiting;
+  $("todayCount").textContent=acceptedToday;
 
-  document.getElementById("acceptedCount").textContent =
-    accepted;
-
-  document.getElementById("todayCount").textContent =
-    acceptedToday;
-
+  const list=$("customerList");
   list.replaceChildren();
 
-  if (!customers.length) {
-    showEmpty("No active customer requests.");
+  if(!customers.length){
+    empty(list,"No active customer requests.");
     return;
   }
 
-  customers.forEach(customer => {
-    const card = document.createElement("div");
-    card.className = "customer";
+  customers.forEach(customer=>{
+    const card=document.createElement("div");
+    card.className="customer";
 
-    const top = document.createElement("div");
-    top.className = "customer-top";
+    const top=document.createElement("div");
+    top.className="customer-top";
 
-    const name = document.createElement("strong");
-    name.textContent =
-      customer.customer_name || "Customer";
+    const name=document.createElement("strong");
+    name.textContent=customer.customer_name||"Customer";
 
-    const status = document.createElement("span");
-    status.className =
-      "status " +
-      (customer.status === "Waiting"
-        ? "waiting"
-        : "accepted");
+    const badge=document.createElement("span");
+    badge.className="status "+
+      (customer.status==="Waiting"?"waiting":"accepted");
+    badge.textContent=customer.status;
+    top.append(name,badge);
 
-    status.textContent = customer.status;
-    top.append(name, status);
+    const service=document.createElement("p");
+    service.textContent=
+      "Service: "+(customer.service||"Haircut");
 
-    const service = document.createElement("p");
-    service.textContent =
-      "Service: " + (customer.service || "Haircut");
+    const preference=document.createElement("p");
+    preference.textContent=
+      "Preference: "+
+      (customer.barber_preference||"Next Available");
 
-    const barber = document.createElement("p");
-    barber.textContent =
-      "Preference: " +
-      (customer.barber_preference || "Next Available");
+    const assigned=document.createElement("p");
 
-    card.append(top, service, barber);
-
-    const assignedBarber = document.createElement("p");
-
-    if (customer.status === "Waiting") {
-      assignedBarber.textContent =
+    if(customer.status==="Waiting"){
+      assigned.textContent=
         "Assigned barber: Awaiting Barber";
-    } else if (customer.barber_id) {
-      assignedBarber.textContent =
-        "Accepted by: " +
-        (barberNames.get(customer.barber_id) ||
-          "Barber name unavailable");
+    } else if(customer.barber_id){
+      assigned.textContent=
+        "Accepted by: "+
+        (barberNames.get(customer.barber_id)||
+         "Barber name unavailable");
     } else {
-      assignedBarber.textContent =
-        "Accepted by: Not assigned";
+      assigned.textContent="Accepted by: Not assigned";
     }
 
-    card.appendChild(assignedBarber);
+    card.append(top,service,preference,assigned);
 
-    if (customer.status === "Waiting") {
-      const hint = document.createElement("p");
-      hint.textContent =
+    if(customer.status==="Waiting"){
+      const hint=document.createElement("p");
+      hint.textContent=
         "Waiting for a barber to accept this customer.";
       card.appendChild(hint);
-    } else if (customer.status === "Accepted") {
-      const estimate = document.createElement("p");
-      estimate.style.color = "var(--green)";
-      estimate.style.fontWeight = "bold";
-
-      estimate.textContent =
-        "Accepted · Estimated wait: " +
-        (customer.estimated_wait_minutes ?? "Not set") +
+    } else if(customer.status==="Accepted"){
+      const estimate=document.createElement("p");
+      estimate.style.color="var(--green)";
+      estimate.style.fontWeight="bold";
+      estimate.textContent=
+        "Accepted · Estimated wait: "+
+        (customer.estimated_wait_minutes??"Not set")+
         " minutes";
-
       card.appendChild(estimate);
     }
 
@@ -581,772 +533,225 @@ function render(customers, acceptedToday, barberNames) {
   });
 }
 
-async function loadQueue(preserveMessage = false) {
-  if (!ready || loading) return;
-
-  loading = true;
+async function loadQueue(){
+  if(!ready||loading)return;
+  loading=true;
 
   try {
-    const [
-      queueResult,
-      countResult,
-      barbersResult
-    ] = await Promise.all([
-      supabase
-        .from("capq_queue")
-        .select(
-          "id,customer_name,service,barber_preference," +
-          "status,barber_id,estimated_wait_minutes,created_at"
-        )
-        .eq("shop_id", SHOP_ID)
-        .in("status", ["Waiting", "Accepted"])
-        .order("created_at", { ascending: true }),
+    const [queueResult,countResult,barbersResult]=
+      await Promise.all([
+        supabase.from("capq_queue")
+          .select(
+            "id,customer_name,service,barber_preference,"+
+            "status,barber_id,estimated_wait_minutes,created_at"
+          )
+          .eq("shop_id",SHOP_ID)
+          .in("status",["Waiting","Accepted"])
+          .order("created_at",{ascending:true}),
 
-      supabase
-        .from("capq_queue")
-        .select("id", { count: "exact", head: true })
-        .eq("shop_id", SHOP_ID)
-        .eq("status", "Accepted")
-        .gte("accepted_at", startOfToday()),
+        supabase.from("capq_queue")
+          .select("id",{count:"exact",head:true})
+          .eq("shop_id",SHOP_ID)
+          .eq("status","Accepted")
+          .gte("accepted_at",startOfToday()),
 
-      supabase
-        .from("barbers")
-        .select("id,name")
-        .eq("shop_id", SHOP_ID)
-    ]);
+        supabase.from("barbers")
+          .select("id,name")
+          .eq("shop_id",SHOP_ID)
+      ]);
 
-    if (queueResult.error) {
-      throw queueResult.error;
-    }
+    if(queueResult.error)throw queueResult.error;
+    if(countResult.error)throw countResult.error;
+    if(barbersResult.error)throw barbersResult.error;
 
-    if (countResult.error) {
-      throw countResult.error;
-    }
-
-    if (barbersResult.error) {
-      throw barbersResult.error;
-    }
-
-    const barberNames = new Map(
-      (barbersResult.data || []).map(
-        barber => [barber.id, barber.name]
-      )
+    const names=new Map(
+      (barbersResult.data||[])
+        .map(b=>[b.id,b.name])
     );
 
-    render(
-      queueResult.data || [],
-      countResult.count || 0,
-      barberNames
+    renderQueue(
+      queueResult.data||[],
+      countResult.count||0,
+      names
     );
-
-    if (!preserveMessage) {
-      setMessage("");
-    }
-
-  } catch (error) {
-    setMessage(
-      "Unable to load queue: " + error.message
-    );
+    setMessage("");
+  } catch(error){
+    setMessage("Unable to load queue: "+error.message);
   } finally {
-    loading = false;
+    loading=false;
   }
 }
 
-document.getElementById("signOutButton")
-  .addEventListener("click", async () => {
-    await supabase.auth.signOut();
-    window.location.replace("login.html");
-  });
+function createBarberCard(barber,profile){
+  const card=document.createElement("article");
+  card.className="barber-card";
 
-if (await verifyOwner()) {
-  ready = true;
+  const head=document.createElement("div");
+  head.className="barber-head";
 
-  await loadQueue();
+  const avatar=document.createElement("div");
+  avatar.className="avatar";
 
-  setInterval(() => {
-    if (!document.hidden) {
-      loadQueue();
+  if(validHttps(profile?.avatar_url)){
+    const img=document.createElement("img");
+    img.src=profile.avatar_url;
+    img.alt="";
+    img.onerror=()=>{
+      avatar.replaceChildren();
+      avatar.textContent=initials(barber.name);
+    };
+    avatar.appendChild(img);
+  } else {
+    avatar.textContent=initials(barber.name);
+  }
+
+  const info=document.createElement("div");
+  const name=document.createElement("div");
+  name.className="barber-name";
+  name.textContent=
+    profile?.display_name||barber.name||"Barber";
+
+  const badge=document.createElement("span");
+  badge.className="availability";
+  badge.textContent=
+    availabilityLabel(barber.availability_mode);
+
+  if(["walk_ins_only","both"]
+      .includes(barber.availability_mode)){
+    badge.classList.add("walkin");
+  }
+
+  if(barber.availability_mode==="unavailable"){
+    badge.classList.add("unavailable");
+  }
+
+  info.append(name,badge);
+  head.append(avatar,info);
+  card.appendChild(head);
+
+  const actions=document.createElement("div");
+  actions.className="barber-actions";
+
+  const manage=document.createElement("a");
+  manage.href="barber-management.html";
+  manage.className="btn btn-gold";
+  manage.textContent="Manage";
+  actions.appendChild(manage);
+
+  const directory=document.createElement("a");
+  directory.href="barbers.html";
+  directory.className="btn";
+  directory.textContent="Directory";
+  actions.appendChild(directory);
+
+  if(profile?.slug &&
+     /^[a-z0-9-]+$/.test(profile.slug)){
+    const publicProfile=document.createElement("a");
+    publicProfile.href=
+      "barber-profile.html?slug="+
+      encodeURIComponent(profile.slug);
+    publicProfile.className="btn btn-outline wide";
+    publicProfile.textContent="View Barber Connect";
+    publicProfile.target="_blank";
+    publicProfile.rel="noopener noreferrer";
+    actions.appendChild(publicProfile);
+  }
+
+  card.appendChild(actions);
+  return card;
+}
+
+async function loadBarbers(){
+  if(!ready||loadingBarbers)return;
+  loadingBarbers=true;
+
+  try {
+    const {data:barbers,error}=await supabase
+      .from("barbers")
+      .select("id,name,availability_mode")
+      .eq("shop_id",SHOP_ID)
+      .order("name",{ascending:true});
+
+    if(error)throw error;
+
+    const rows=barbers||[];
+    $("barberCount").textContent=rows.length;
+
+    let profiles=[];
+
+    if(rows.length){
+      const result=await supabase
+        .from("barber_connect_profiles")
+        .select(
+          "barber_id,display_name,avatar_url,slug"
+        )
+        .in("barber_id",rows.map(b=>b.id));
+
+      if(result.error){
+        $("barberMessage").textContent=
+          "Profile previews unavailable: "+
+          result.error.message;
+      } else {
+        profiles=result.data||[];
+        $("barberMessage").textContent="";
+      }
+    } else {
+      $("barberMessage").textContent="";
     }
-  }, 5000);
-}
 
-</script>
-
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#101114">
-<title>CAPQ Pro | Owner Dashboard</title>
-
-<link rel="icon" type="image/svg+xml" href="assets/capq-mark.svg">
-<link rel="stylesheet" href="assets/capq-brand.css">
-
-<style>
-:root {
-  --black:#101114;
-  --charcoal:#292D33;
-  --gold:#D6B45C;
-  --green:#16A77A;
-  --white:#F7F7F4;
-  --muted:#A9ADB5;
-}
-
-* {
-  box-sizing:border-box;
-}
-
-body {
-  margin:0;
-  background:var(--black);
-  color:var(--white);
-  font-family:Arial,Helvetica,sans-serif;
-  line-height:1.5;
-}
-
-main {
-  max-width:700px;
-  margin:auto;
-  padding:25px 18px 60px;
-}
-
-header {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-  margin-bottom:35px;
-  padding-bottom:20px;
-  border-bottom:1px solid #35383d;
-}
-
-.brand {
-  display:flex;
-  align-items:center;
-  gap:12px;
-  text-decoration:none;
-  color:white;
-}
-
-.logo-icon {
-  width:54px;
-  height:54px;
-  background:#08090b;
-  border:1px solid #786434;
-  border-radius:15px;
-  display:grid;
-  place-items:center;
-}
-
-.logo-icon span {
-  font-size:40px;
-  font-weight:900;
-  color:var(--gold);
-}
-
-.capq-pro-wordmark {
-  width:160px;
-  max-width:100%;
-  height:auto;
-  display:block;
-}
-
-.subtitle {
-  color:var(--muted);
-  font-size:9px;
-  letter-spacing:2px;
-  margin-top:5px;
-}
-
-.demo-badge {
-  color:var(--green);
-  border:1px solid #286b55;
-  padding:6px 11px;
-  border-radius:20px;
-  font-size:11px;
-  white-space:nowrap;
-}
-
-.welcome {
-  margin-bottom:25px;
-}
-
-.welcome h1 {
-  font-size:clamp(27px,5vw,36px);
-  margin:0 0 7px;
-}
-
-.welcome p {
-  color:var(--muted);
-  margin:0;
-  font-size:14px;
-}
-
-.stats {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin:25px 0 35px;
-}
-
-.stat {
-  background:#1c1f24;
-  border:1px solid #383c42;
-  border-radius:14px;
-  padding:18px;
-}
-
-.stat small {
-  color:var(--muted);
-  font-size:12px;
-}
-
-.stat strong {
-  display:block;
-  font-size:34px;
-  color:var(--gold);
-  margin-top:6px;
-}
-
-.stat.available strong {
-  color:var(--green);
-}
-
-.section-header {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-  margin-bottom:15px;
-}
-
-h2 {
-  font-size:23px;
-  margin:0;
-}
-
-.queue-label {
-  font-size:11px;
-  color:var(--green);
-  background:#123e30;
-  border-radius:20px;
-  padding:6px 10px;
-}
-
-.customer {
-  background:#1c1f24;
-  border:1px solid #383c42;
-  border-radius:15px;
-  padding:20px;
-  margin:12px 0;
-}
-
-.customer-top {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-  margin-bottom:12px;
-}
-
-.customer strong {
-  font-size:18px;
-}
-
-.customer p {
-  color:var(--muted);
-  font-size:13px;
-  margin:6px 0;
-}
-
-.status {
-  display:inline-block;
-  border-radius:20px;
-  padding:6px 10px;
-  font-size:11px;
-  font-weight:bold;
-  white-space:nowrap;
-}
-
-.status.waiting {
-  color:#e8c96e;
-  background:#40361e;
-}
-
-.status.accepted {
-  color:#6de6b4;
-  background:#123e30;
-}
-
-.empty {
-  text-align:center;
-  color:var(--muted);
-  padding:35px 15px;
-  background:#1c1f24;
-  border:1px dashed #45494f;
-  border-radius:14px;
-}
-
-.message {
-  color:#e8c96e;
-  font-size:13px;
-  min-height:20px;
-  margin:12px 0;
-}
-
-.nav {
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-  margin-top:35px;
-}
-
-.nav a {
-  text-align:center;
-  text-decoration:none;
-  background:var(--charcoal);
-  border:1px solid #44484e;
-  color:white;
-  padding:13px 8px;
-  border-radius:9px;
-  font-size:13px;
-}
-
-.nav a.manage-link {
-  border-color:#786434;
-  color:var(--gold);
-}
-
-.note {
-  color:var(--muted);
-  font-size:12px;
-  text-align:center;
-  margin-top:25px;
-}
-
-.signout {
-  background:#292D33;
-  color:white;
-  border:0;
-  border-radius:9px;
-  padding:9px 12px;
-  cursor:pointer;
-}
-
-.header-actions {
-  display:flex;
-  gap:8px;
-  align-items:center;
-}
-
-@media(max-width:480px) {
-  .stats {
-    gap:8px;
-  }
-
-  .stat {
-    padding:13px 10px;
-  }
-
-  .stat strong {
-    font-size:28px;
-  }
-
-  .stat small {
-    font-size:10px;
-  }
-
-  .logo-icon {
-    width:46px;
-    height:46px;
-  }
-
-  .logo-icon span {
-    font-size:35px;
-  }
-
-  .customer {
-    padding:16px;
-  }
-
-  .nav a {
-    font-size:12px;
-  }
-
-  .header-actions {
-    flex-wrap:wrap;
-    justify-content:flex-end;
-  }
-}
-</style>
-</head>
-
-<body>
-<main>
-
-<header>
-  <a href="index.html" class="brand">
-    <div class="logo-icon" aria-hidden="true">
-      <span>C</span>
-    </div>
-
-    <div>
-      <img
-        class="capq-pro-wordmark"
-        src="assets/capq-wordmark.svg"
-        alt="CAPQ Pro"
-      >
-      <div class="subtitle">BUILT FOR BARBERS</div>
-    </div>
-  </a>
-
-  <div class="header-actions">
-    <span class="demo-badge">LIVE TEST</span>
-    <button
-      class="signout"
-      id="signOutButton"
-      type="button"
-    >
-      Sign Out
-    </button>
-  </div>
-</header>
-
-<section class="welcome">
-  <h1>Owner Dashboard</h1>
-  <p id="shopName">
-    Connecting to your shop...
-  </p>
-</section>
-
-<section class="stats">
-  <div class="stat capq-panel-border">
-    <small>Waiting</small>
-    <strong id="waitingCount">0</strong>
-  </div>
-
-  <div class="stat capq-panel-border">
-    <small>Accepted</small>
-    <strong id="acceptedCount">0</strong>
-  </div>
-
-  <div class="stat available">
-    <small>Accepted Today</small>
-    <strong id="todayCount">0</strong>
-  </div>
-</section>
-
-<section>
-  <div class="section-header">
-    <h2>Customer Queue</h2>
-    <span class="queue-label">● Live Queue</span>
-  </div>
-
-  <p
-    id="message"
-    class="message"
-    role="status"
-    aria-live="polite"
-  ></p>
-
-  <div id="customerList"></div>
-</section>
-
-<nav class="nav">
-  <a href="index.html">Home</a>
-
-  <a href="checkin.html">Check-In</a>
-
-  <a href="barber-management.html" class="manage-link">
-    Manage Barbers
-  </a>
-
-  <a href="dashboard.html">Dashboard</a>
-</nav>
-
-<p class="note">
-  Shop-wide queue overview.
-  Barbers accept customers from their own dashboard.
-  SMS notifications are not connected yet.
-</p>
-
-</main>
-
-<script type="module">
-import { createClient } from
-  "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
-
-const SUPABASE_URL =
-  "https://nfazsevnpfmabsipkrrh.supabase.co";
-
-const SUPABASE_KEY =
-  "sb_publishable_FtcxTtmcHvtyu3m2KJRjqA_3Nzkk2La";
-
-const SHOP_ID =
-  "061c8b27-0d31-404a-b227-2839639acb35";
-
-const supabase = createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
-
-const list =
-  document.getElementById("customerList");
-
-const message =
-  document.getElementById("message");
-
-let ready = false;
-let loading = false;
-let shopName = "";
-
-function setMessage(text) {
-  message.textContent = text;
-}
-
-function startOfToday() {
-  const date = new Date();
-  date.setHours(0, 0, 0, 0);
-  return date.toISOString();
-}
-
-function showEmpty(text) {
-  list.replaceChildren();
-
-  const empty = document.createElement("div");
-  empty.className = "empty";
-  empty.textContent = text;
-
-  list.appendChild(empty);
-}
-
-async function verifyOwner() {
-  const {
-    data: { user },
-    error: authError
-  } = await supabase.auth.getUser();
-
-  if (authError || !user) {
-    window.location.replace("login.html");
-    return false;
-  }
-
-  const { data: shop, error } = await supabase
-    .from("barber_shops")
-    .select("id,name")
-    .eq("id", SHOP_ID)
-    .eq("owner_id", user.id)
-    .maybeSingle();
-
-  if (error || !shop) {
-    setMessage(
-      error
-        ? "Shop access error: " + error.message
-        : "Your account is not assigned to this shop."
+    const profileMap=new Map(
+      profiles.map(p=>[p.barber_id,p])
     );
 
-    showEmpty("Shop access unavailable.");
-    return false;
+    const grid=$("barberGrid");
+    grid.replaceChildren();
+
+    if(!rows.length){
+      empty(grid,"No barbers added to this shop yet.");
+      return;
+    }
+
+    rows.forEach(barber=>{
+      grid.appendChild(
+        createBarberCard(
+          barber,
+          profileMap.get(barber.id)||null
+        )
+      );
+    });
+  } catch(error){
+    $("barberMessage").textContent=
+      "Unable to load barbers: "+error.message;
+  } finally {
+    loadingBarbers=false;
   }
-
-  shopName = shop.name;
-
-  document.getElementById("shopName").textContent =
-    shopName + " · Owner Dashboard";
-
-  return true;
 }
 
-function render(customers, acceptedToday, barberNames) {
-  const waiting = customers.filter(
-    c => c.status === "Waiting"
-  ).length;
-
-  const accepted = customers.filter(
-    c => c.status === "Accepted"
-  ).length;
-
-  document.getElementById("waitingCount").textContent =
-    waiting;
-
-  document.getElementById("acceptedCount").textContent =
-    accepted;
-
-  document.getElementById("todayCount").textContent =
-    acceptedToday;
-
-  list.replaceChildren();
-
-  if (!customers.length) {
-    showEmpty("No active customer requests.");
+$("signOutButton").addEventListener("click",async()=>{
+  const {error}=await supabase.auth.signOut();
+  if(error){
+    setMessage("Sign out failed: "+error.message);
     return;
   }
+  window.location.replace("login.html");
+});
 
-  customers.forEach(customer => {
-    const card = document.createElement("div");
-    card.className = "customer";
+if(await verifyOwner()){
+  ready=true;
+  await Promise.all([loadQueue(),loadBarbers()]);
 
-    const top = document.createElement("div");
-    top.className = "customer-top";
-
-    const name = document.createElement("strong");
-    name.textContent =
-      customer.customer_name || "Customer";
-
-    const status = document.createElement("span");
-    status.className =
-      "status " +
-      (customer.status === "Waiting"
-        ? "waiting"
-        : "accepted");
-
-    status.textContent = customer.status;
-    top.append(name, status);
-
-    const service = document.createElement("p");
-    service.textContent =
-      "Service: " + (customer.service || "Haircut");
-
-    const barber = document.createElement("p");
-    barber.textContent =
-      "Preference: " +
-      (customer.barber_preference || "Next Available");
-
-    card.append(top, service, barber);
-
-    const assignedBarber = document.createElement("p");
-
-    if (customer.status === "Waiting") {
-      assignedBarber.textContent =
-        "Assigned barber: Awaiting Barber";
-    } else if (customer.barber_id) {
-      assignedBarber.textContent =
-        "Accepted by: " +
-        (barberNames.get(customer.barber_id) ||
-          "Barber name unavailable");
-    } else {
-      assignedBarber.textContent =
-        "Accepted by: Not assigned";
-    }
-
-    card.appendChild(assignedBarber);
-
-    if (customer.status === "Waiting") {
-      const hint = document.createElement("p");
-      hint.textContent =
-        "Waiting for a barber to accept this customer.";
-      card.appendChild(hint);
-    } else if (customer.status === "Accepted") {
-      const estimate = document.createElement("p");
-      estimate.style.color = "var(--green)";
-      estimate.style.fontWeight = "bold";
-
-      estimate.textContent =
-        "Accepted · Estimated wait: " +
-        (customer.estimated_wait_minutes ?? "Not set") +
-        " minutes";
-
-      card.appendChild(estimate);
-    }
-
-    list.appendChild(card);
-  });
-}
-
-async function loadQueue(preserveMessage = false) {
-  if (!ready || loading) return;
-
-  loading = true;
-
-  try {
-    const [
-      queueResult,
-      countResult,
-      barbersResult
-    ] = await Promise.all([
-      supabase
-        .from("capq_queue")
-        .select(
-          "id,customer_name,service,barber_preference," +
-          "status,barber_id,estimated_wait_minutes,created_at"
-        )
-        .eq("shop_id", SHOP_ID)
-        .in("status", ["Waiting", "Accepted"])
-        .order("created_at", { ascending: true }),
-
-      supabase
-        .from("capq_queue")
-        .select("id", { count: "exact", head: true })
-        .eq("shop_id", SHOP_ID)
-        .eq("status", "Accepted")
-        .gte("accepted_at", startOfToday()),
-
-      supabase
-        .from("barbers")
-        .select("id,name")
-        .eq("shop_id", SHOP_ID)
-    ]);
-
-    if (queueResult.error) {
-      throw queueResult.error;
-    }
-
-    if (countResult.error) {
-      throw countResult.error;
-    }
-
-    if (barbersResult.error) {
-      throw barbersResult.error;
-    }
-
-    const barberNames = new Map(
-      (barbersResult.data || []).map(
-        barber => [barber.id, barber.name]
-      )
-    );
-
-    render(
-      queueResult.data || [],
-      countResult.count || 0,
-      barberNames
-    );
-
-    if (!preserveMessage) {
-      setMessage("");
-    }
-
-  } catch (error) {
-    setMessage(
-      "Unable to load queue: " + error.message
-    );
-  } finally {
-    loading = false;
-  }
-}
-
-document.getElementById("signOutButton")
-  .addEventListener("click", async () => {
-    await supabase.auth.signOut();
-    window.location.replace("login.html");
-  });
-
-if (await verifyOwner()) {
-  ready = true;
-
-  await loadQueue();
-
-  setInterval(() => {
-    if (!document.hidden) {
+  setInterval(()=>{
+    if(!document.hidden){
       loadQueue();
     }
-  }, 5000);
+  },5000);
+
+  setInterval(()=>{
+    if(!document.hidden){
+      loadBarbers();
+    }
+  },30000);
 }
-
 </script>
-
 </body>
 </html>
