@@ -3,9 +3,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#101114">
-
 <title>CAPQ Pro | Meet Our Barbers</title>
 
 <link rel="icon" type="image/svg+xml" href="assets/capq-mark.svg">
@@ -14,31 +13,25 @@
 <style>
 :root {
   --black:#101114;
-  --charcoal:#292D33;
-  --gold:#D6B45C;
-  --green:#16A77A;
-  --white:#F7F7F4;
-  --muted:#A9ADB5;
+  --charcoal:#292d33;
+  --gold:#d6b45c;
+  --green:#16a77a;
+  --white:#f7f7f4;
+  --muted:#a9adb5;
 }
-
-* { box-sizing:border-box; }
-
+* {box-sizing:border-box}
 body {
   margin:0;
   background:var(--black);
   color:var(--white);
-  font-family:Arial,Helvetica,sans-serif;
-  line-height:1.5;
+  font:16px/1.5 Arial,Helvetica,sans-serif;
 }
-
-a { color:inherit; }
-
+a {color:inherit}
 .container {
   max-width:1100px;
   margin:auto;
   padding:24px 20px 70px;
 }
-
 header {
   display:flex;
   justify-content:space-between;
@@ -47,39 +40,28 @@ header {
   padding-bottom:22px;
   border-bottom:1px solid #35383d;
 }
-
 .brand {
   display:flex;
   align-items:center;
   gap:12px;
   text-decoration:none;
 }
-
-.brand img {
-  width:155px;
-  max-width:100%;
-  height:auto;
-}
-
+.brand img {width:155px;max-width:100%}
 .header-links {
   display:flex;
-  gap:15px;
   align-items:center;
   flex-wrap:wrap;
+  gap:15px;
 }
-
 .header-links a {
   text-decoration:none;
   font-size:13px;
 }
-
-.gold-link { color:var(--gold); }
-
+.gold-link {color:var(--gold)}
 .hero {
   text-align:center;
   padding:65px 0 35px;
 }
-
 .eyebrow {
   color:var(--gold);
   font-size:12px;
@@ -87,30 +69,27 @@ header {
   letter-spacing:2px;
   text-transform:uppercase;
 }
-
 h1 {
   font-size:clamp(34px,6vw,58px);
   line-height:1.12;
   margin:15px 0;
 }
-
 .hero p {
   color:var(--muted);
   max-width:620px;
   margin:0 auto 25px;
 }
-
 .hero-actions {
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
   gap:12px;
 }
-
 .btn {
   display:inline-flex;
   justify-content:center;
   align-items:center;
+  text-align:center;
   padding:13px 19px;
   border-radius:9px;
   text-decoration:none;
@@ -119,41 +98,39 @@ h1 {
   border:1px solid #555;
   cursor:pointer;
 }
-
 .btn-primary {
   background:var(--gold);
   color:#111;
   border-color:var(--gold);
 }
-
 .btn-secondary {
   background:var(--charcoal);
   color:white;
 }
-
 .btn-green {
   background:var(--green);
   color:white;
   border-color:var(--green);
 }
-
+.btn-outline {
+  background:transparent;
+  color:var(--gold);
+  border-color:var(--gold);
+}
 .btn-disabled {
   opacity:.5;
   cursor:not-allowed;
 }
-
 .search-area {
   max-width:600px;
   margin:20px auto 35px;
 }
-
 .search-area label {
   display:block;
   font-size:13px;
   margin-bottom:9px;
   color:var(--muted);
 }
-
 .search-area input {
   width:100%;
   padding:16px;
@@ -163,11 +140,9 @@ h1 {
   border:1px solid #484c53;
   font-size:15px;
 }
-
 .search-area input:focus {
   outline:2px solid var(--gold);
 }
-
 .section-title {
   display:flex;
   justify-content:space-between;
@@ -176,64 +151,88 @@ h1 {
   gap:12px;
   margin-bottom:22px;
 }
-
 .section-title h2 {
   font-size:25px;
   margin:0;
 }
-
 .count {
   font-size:12px;
   color:var(--muted);
 }
-
 .barber-grid {
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:20px;
 }
-
 .barber-card {
   background:#1c1f24;
   border:1px solid #393c42;
   border-radius:18px;
   overflow:hidden;
+  transition:transform .2s,border-color .2s;
 }
-
+.barber-card:hover {
+  transform:translateY(-3px);
+  border-color:var(--gold);
+}
 .barber-photo {
-  height:200px;
-  background:linear-gradient(
-    135deg,#292D33,#101114
-  );
+  height:210px;
+  background:linear-gradient(135deg,#292d33,#101114);
+  position:relative;
   display:flex;
   justify-content:center;
   align-items:center;
+  overflow:hidden;
   border-bottom:1px solid #393c42;
 }
-
+.cover-image {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.photo-shade {
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    transparent,
+    rgba(0,0,0,.65)
+  );
+}
 .avatar {
-  width:110px;
-  height:110px;
+  width:112px;
+  height:112px;
   border-radius:50%;
-  border:2px solid var(--gold);
+  border:3px solid var(--gold);
   background:#111317;
   color:var(--gold);
   display:grid;
   place-items:center;
   font-size:40px;
   font-weight:bold;
+  position:relative;
+  z-index:1;
+  overflow:hidden;
 }
-
-.barber-body {
-  padding:22px;
+.avatar img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
-
+.barber-body {padding:22px}
 .barber-name {
   font-size:22px;
   font-weight:bold;
   margin:0 0 8px;
 }
-
+.barber-bio {
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.6;
+  margin:0 0 16px;
+  overflow-wrap:anywhere;
+}
 .availability {
   display:inline-block;
   font-size:11px;
@@ -243,39 +242,30 @@ h1 {
   color:#e8c96e;
   margin-bottom:18px;
 }
-
 .availability.walkin {
   background:#123e30;
   color:#6de6b4;
 }
-
 .availability.unavailable {
   background:#3b2528;
   color:#ff9999;
 }
-
 .barber-actions {
   display:grid;
   gap:10px;
 }
-
-.barber-actions .btn {
-  width:100%;
-}
-
+.barber-actions .btn {width:100%}
 .small-note {
   color:var(--muted);
   font-size:12px;
   margin-top:13px;
 }
-
 .message {
   text-align:center;
   color:var(--gold);
   padding:25px 10px;
   font-size:14px;
 }
-
 .empty {
   grid-column:1/-1;
   text-align:center;
@@ -285,7 +275,6 @@ h1 {
   padding:35px 20px;
   color:var(--muted);
 }
-
 .info-panel {
   margin-top:50px;
   padding:28px;
@@ -294,17 +283,12 @@ h1 {
   background:#1c1f24;
   text-align:center;
 }
-
-.info-panel h2 {
-  margin:0 0 12px;
-}
-
+.info-panel h2 {margin:0 0 12px}
 .info-panel p {
   color:var(--muted);
   max-width:650px;
   margin:0 auto 20px;
 }
-
 footer {
   margin-top:55px;
   border-top:1px solid #35383d;
@@ -313,39 +297,24 @@ footer {
   text-align:center;
   font-size:12px;
 }
-
 footer a {
   color:var(--gold);
   text-decoration:none;
 }
-
 @media(max-width:850px) {
   .barber-grid {
     grid-template-columns:repeat(2,minmax(0,1fr));
   }
 }
-
 @media(max-width:580px) {
-  .barber-grid {
-    grid-template-columns:1fr;
-  }
-
+  .barber-grid {grid-template-columns:1fr}
   header {
     align-items:flex-start;
     flex-direction:column;
   }
-
-  .hero {
-    padding:45px 0 25px;
-  }
-
-  .barber-photo {
-    height:170px;
-  }
-
-  .info-panel {
-    padding:22px 16px;
-  }
+  .hero {padding:45px 0 25px}
+  .barber-photo {height:190px}
+  .info-panel {padding:22px 16px}
 }
 </style>
 </head>
@@ -355,10 +324,7 @@ footer a {
 
 <header>
   <a href="index.html" class="brand">
-    <img
-      src="assets/capq-wordmark.svg"
-      alt="CAPQ Pro"
-    >
+    <img src="assets/capq-wordmark.svg" alt="CAPQ Pro">
   </a>
 
   <nav class="header-links">
@@ -371,23 +337,24 @@ footer a {
 </header>
 
 <section class="hero">
-  <div class="eyebrow">
-    CAPQ Barber Connect
-  </div>
+  <div class="eyebrow">CAPQ Barber Connect</div>
 
-  <h1>Meet Our <span style="color:var(--gold)">Barbers.</span></h1>
+  <h1>
+    Meet Our
+    <span style="color:var(--gold)">Barbers.</span>
+  </h1>
 
   <p>
-    Find your barber, explore your options, and
-    connect directly. Book an appointment with
-    your preferred barber or join the walk-in queue.
+    Find your barber, explore their work,
+    and connect directly. Book an appointment
+    with your preferred barber or join the
+    walk-in queue.
   </p>
 
   <div class="hero-actions">
     <a href="checkin.html" class="btn btn-primary">
       Join Walk-In Queue
     </a>
-
     <a href="#barbers" class="btn btn-secondary">
       Find Your Barber
     </a>
@@ -395,10 +362,7 @@ footer a {
 </section>
 
 <div class="search-area">
-  <label for="barberSearch">
-    Search for a barber
-  </label>
-
+  <label for="barberSearch">Search for a barber</label>
   <input
     id="barberSearch"
     type="search"
@@ -415,19 +379,12 @@ footer a {
     </span>
   </div>
 
-  <p
-    id="message"
-    class="message"
-    role="status"
-    aria-live="polite"
-  >
+  <p id="message" class="message"
+     role="status" aria-live="polite">
     Connecting to CAPQ Pro...
   </p>
 
-  <div
-    id="barberGrid"
-    class="barber-grid"
-  ></div>
+  <div id="barberGrid" class="barber-grid"></div>
 </section>
 
 <section class="info-panel">
@@ -436,10 +393,8 @@ footer a {
   <p>
     Need a haircut without an appointment?
     Join the CAPQ walk-in queue.
-
     Already have a favorite barber?
-    Use their available booking link to
-    schedule directly.
+    Use their booking link to schedule directly.
   </p>
 
   <a href="checkin.html" class="btn btn-green">
@@ -448,15 +403,10 @@ footer a {
 </section>
 
 <footer>
+  <p>CAPQ Pro · Built for Barbers</p>
   <p>
-    CAPQ Pro · Built for Barbers
-  </p>
-
-  <p>
-    <a href="index.html">Home</a>
-    ·
-    <a href="checkin.html">Check-In</a>
-    ·
+    <a href="index.html">Home</a> ·
+    <a href="checkin.html">Check-In</a> ·
     <a href="login.html">Login</a>
   </p>
 </footer>
@@ -464,7 +414,7 @@ footer a {
 </div>
 
 <script type="module">
-import { createClient } from
+import {createClient} from
   "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
 const SUPABASE_URL =
@@ -476,264 +426,337 @@ const SUPABASE_KEY =
 const SHOP_ID =
   "061c8b27-0d31-404a-b227-2839639acb35";
 
-const supabase = createClient(
+const supabase=createClient(
   SUPABASE_URL,
   SUPABASE_KEY
 );
 
-const grid =
-  document.getElementById("barberGrid");
+const grid=document.getElementById("barberGrid");
+const message=document.getElementById("message");
+const searchInput=document.getElementById("barberSearch");
+const count=document.getElementById("barberCount");
 
-const message =
-  document.getElementById("message");
+let allBarbers=[];
 
-const searchInput =
-  document.getElementById("barberSearch");
-
-const count =
-  document.getElementById("barberCount");
-
-let allBarbers = [];
-
-function showMessage(text) {
-  message.textContent = text;
+function showMessage(text){
+  message.textContent=text;
 }
 
-function getInitials(name) {
-  return (name || "B")
+function getInitials(name){
+  return (name||"B")
     .trim()
     .split(/\s+/)
     .slice(0,2)
-    .map(part => part.charAt(0))
+    .map(part=>part.charAt(0))
     .join("")
     .toUpperCase();
 }
 
-function availabilityLabel(mode) {
-  switch(mode) {
+function availabilityLabel(mode){
+  switch(mode){
     case "walk_ins_only":
       return "Walk-Ins Available";
-
     case "appointments_only":
       return "Appointments Only";
-
     case "both":
       return "Walk-Ins & Appointments";
-
     case "unavailable":
       return "Currently Unavailable";
-
     default:
       return "Contact for Availability";
   }
 }
 
-function validBooksyUrl(value) {
-  if (!value) return false;
-
+function validHttps(value){
+  if(!value)return false;
   try {
-    const url = new URL(value);
-
-    if (url.protocol !== "https:") {
-      return false;
-    }
-
-    const host = url.hostname.toLowerCase();
-
-    return (
-      host === "booksy.com" ||
-      host.endsWith(".booksy.com") ||
-      host === "booksy.net" ||
-      host.endsWith(".booksy.net")
-    );
+    return new URL(value).protocol==="https:";
   } catch {
     return false;
   }
 }
 
-function createButton(text, href, className) {
-  const a = document.createElement("a");
-  a.textContent = text;
-  a.href = href;
-  a.className = "btn " + className;
+function validBooksyUrl(value){
+  if(!validHttps(value))return false;
+  const host=new URL(value).hostname.toLowerCase();
+
+  return (
+    host==="booksy.com" ||
+    host.endsWith(".booksy.com") ||
+    host==="booksy.net" ||
+    host.endsWith(".booksy.net")
+  );
+}
+
+function createButton(text,href,className){
+  const a=document.createElement("a");
+  a.textContent=text;
+  a.href=href;
+  a.className="btn "+className;
   return a;
 }
 
-function createBarberCard(barber) {
-  const card = document.createElement("article");
-  card.className = "barber-card";
+function createBarberCard(barber){
+  const profile=barber.profile||null;
 
-  const photo = document.createElement("div");
-  photo.className = "barber-photo";
+  const card=document.createElement("article");
+  card.className="barber-card";
 
-  const avatar = document.createElement("div");
-  avatar.className = "avatar";
-  avatar.textContent = getInitials(barber.name);
+  const photo=document.createElement("div");
+  photo.className="barber-photo";
+
+  if(validHttps(profile?.cover_url)){
+    const cover=document.createElement("img");
+    cover.className="cover-image";
+    cover.src=profile.cover_url;
+    cover.alt="";
+    cover.loading="lazy";
+    photo.appendChild(cover);
+
+    const shade=document.createElement("div");
+    shade.className="photo-shade";
+    photo.appendChild(shade);
+  }
+
+  const avatar=document.createElement("div");
+  avatar.className="avatar";
+
+  if(validHttps(profile?.avatar_url)){
+    const img=document.createElement("img");
+    img.src=profile.avatar_url;
+    img.alt="Profile photo of "+barber.name;
+    img.loading="lazy";
+    img.onerror=()=>{
+      avatar.textContent=getInitials(barber.name);
+    };
+    avatar.appendChild(img);
+  } else {
+    avatar.textContent=getInitials(barber.name);
+  }
 
   photo.appendChild(avatar);
 
-  const body = document.createElement("div");
-  body.className = "barber-body";
+  const body=document.createElement("div");
+  body.className="barber-body";
 
-  const name = document.createElement("h3");
-  name.className = "barber-name";
-  name.textContent = barber.name || "CAPQ Barber";
+  const name=document.createElement("h3");
+  name.className="barber-name";
+  name.textContent=
+    profile?.display_name||barber.name||"CAPQ Barber";
 
-  const availability = document.createElement("span");
-  availability.className = "availability";
-  availability.textContent =
+  const availability=document.createElement("span");
+  availability.className="availability";
+  availability.textContent=
     availabilityLabel(barber.availability_mode);
 
-  if (
-    barber.availability_mode === "walk_ins_only" ||
-    barber.availability_mode === "both"
-  ) {
+  if(
+    barber.availability_mode==="walk_ins_only" ||
+    barber.availability_mode==="both"
+  ){
     availability.classList.add("walkin");
   }
 
-  if (barber.availability_mode === "unavailable") {
+  if(barber.availability_mode==="unavailable"){
     availability.classList.add("unavailable");
   }
 
-  const actions = document.createElement("div");
-  actions.className = "barber-actions";
+  body.append(name,availability);
 
-  const acceptsWalkins =
-    barber.availability_mode === "walk_ins_only" ||
-    barber.availability_mode === "both";
+  if(profile?.bio){
+    const bio=document.createElement("p");
+    bio.className="barber-bio";
+    const clean=profile.bio.trim();
 
-  const acceptsAppointments =
-    barber.availability_mode === "appointments_only" ||
-    barber.availability_mode === "both";
+    bio.textContent=clean.length>140
+      ?clean.slice(0,140).trimEnd()+"…"
+      :clean;
 
-  if (acceptsAppointments && validBooksyUrl(barber.booksy_url)) {
-    const book = createButton(
+    body.appendChild(bio);
+  }
+
+  const actions=document.createElement("div");
+  actions.className="barber-actions";
+
+  // Barber Connect portfolio link.
+  if(profile?.slug &&
+     /^[a-z0-9-]+$/.test(profile.slug)){
+    const view=createButton(
+      "View Barber Profile & Portfolio",
+      "barber-profile.html?slug="+
+        encodeURIComponent(profile.slug),
+      "btn-outline"
+    );
+    actions.appendChild(view);
+  }
+
+  const acceptsWalkins=
+    barber.availability_mode==="walk_ins_only" ||
+    barber.availability_mode==="both";
+
+  const acceptsAppointments=
+    barber.availability_mode==="appointments_only" ||
+    barber.availability_mode==="both";
+
+  // Prefer Barber Connect's saved Booksy link.
+  // Fall back to the original barber record.
+  const booksyUrl=
+    validBooksyUrl(profile?.booksy_url)
+      ?profile.booksy_url
+      :barber.booksy_url;
+
+  if(acceptsAppointments &&
+     validBooksyUrl(booksyUrl)){
+    const book=createButton(
       "Book Appointment",
-      barber.booksy_url,
+      booksyUrl,
       "btn-primary"
     );
-
-    book.target = "_blank";
-    book.rel = "noopener noreferrer";
-
+    book.target="_blank";
+    book.rel="noopener noreferrer";
     actions.appendChild(book);
   }
 
-  if (acceptsWalkins) {
-    const checkin = createButton(
+  // Keep the original walk-in route unchanged.
+  if(acceptsWalkins){
+    const checkin=createButton(
       "Walk-In Check-In",
       "checkin.html",
       "btn-secondary"
     );
-
     actions.appendChild(checkin);
   }
 
-  if (!actions.children.length) {
-    const unavailable = document.createElement("span");
-    unavailable.className = "btn btn-disabled";
-    unavailable.textContent =
-      "Online Booking Unavailable";
-
+  if(!actions.children.length){
+    const unavailable=document.createElement("span");
+    unavailable.className="btn btn-disabled";
+    unavailable.textContent="Online Booking Unavailable";
     actions.appendChild(unavailable);
   }
 
-  const note = document.createElement("p");
-  note.className = "small-note";
+  const note=document.createElement("p");
+  note.className="small-note";
 
-  if (acceptsAppointments && validBooksyUrl(barber.booksy_url)) {
-    note.textContent =
+  if(acceptsAppointments &&
+     validBooksyUrl(booksyUrl)){
+    note.textContent=
       "Appointments open through the barber's Booksy page.";
-  } else if (acceptsWalkins) {
-    note.textContent =
+  } else if(acceptsWalkins){
+    note.textContent=
       "Walk-ins are managed through CAPQ Pro.";
   } else {
-    note.textContent =
-      "No online booking option is currently available.";
+    note.textContent=
+      "Contact the barber for current availability.";
   }
 
-  body.append(
-    name,
-    availability,
-    actions,
-    note
-  );
-
+  body.append(actions,note);
   card.append(photo,body);
 
   return card;
 }
 
-function renderBarbers(barbers) {
+function renderBarbers(barbers){
   grid.replaceChildren();
 
-  count.textContent =
-    barbers.length + " barber" +
-    (barbers.length === 1 ? "" : "s");
+  count.textContent=
+    barbers.length+" barber"+
+    (barbers.length===1?"":"s");
 
-  if (!barbers.length) {
-    const empty = document.createElement("div");
-    empty.className = "empty";
-
-    empty.textContent =
-      "No matching barbers found.";
-
+  if(!barbers.length){
+    const empty=document.createElement("div");
+    empty.className="empty";
+    empty.textContent="No matching barbers found.";
     grid.appendChild(empty);
     return;
   }
 
-  for (const barber of barbers) {
+  for(const barber of barbers){
     grid.appendChild(createBarberCard(barber));
   }
 }
 
-function filterBarbers() {
-  const search =
-    searchInput.value.trim().toLowerCase();
+function filterBarbers(){
+  const search=searchInput.value
+    .trim().toLowerCase();
 
-  const filtered = allBarbers.filter(barber =>
-    (barber.name || "")
-      .toLowerCase()
-      .includes(search)
-  );
+  const filtered=allBarbers.filter(barber=>{
+    const name=barber.name||"";
+    const display=barber.profile?.display_name||"";
+
+    return (
+      name.toLowerCase().includes(search) ||
+      display.toLowerCase().includes(search)
+    );
+  });
 
   renderBarbers(filtered);
 }
 
-async function loadBarbers() {
+async function loadBarbers(){
   showMessage("Loading our barbers...");
 
-  const { data, error } = await supabase
-    .from("barbers")
-    .select(
-      "id,name,availability_mode,booksy_url"
-    )
-    .eq("shop_id",SHOP_ID)
-    .order("name",{ascending:true});
+  try {
+    // Load only barbers from this shop.
+    const {data:barbers,error:barberError}=
+      await supabase
+        .from("barbers")
+        .select("id,name,availability_mode,booksy_url")
+        .eq("shop_id",SHOP_ID)
+        .order("name",{ascending:true});
 
-  if (error) {
-    showMessage(
-      "Unable to load barbers: " + error.message
+    if(barberError)throw barberError;
+
+    const rows=barbers||[];
+    const ids=rows.map(b=>b.id);
+
+    let profiles=[];
+
+    // Separate query avoids requiring a database
+    // relationship or join configuration.
+    if(ids.length){
+      const {data,error}=await supabase
+        .from("barber_connect_profiles")
+        .select(
+          "barber_id,display_name,bio,slug,"+
+          "avatar_url,cover_url,booksy_url"
+        )
+        .in("barber_id",ids)
+        .not("slug","is",null);
+
+      if(error){
+        // Keep the barber directory working even
+        // if public profile permissions need fixing.
+        console.warn(
+          "Barber Connect profiles unavailable:",
+          error.message
+        );
+      } else {
+        profiles=data||[];
+      }
+    }
+
+    const profileMap=new Map(
+      profiles.map(p=>[p.barber_id,p])
     );
 
-    count.textContent = "Unavailable";
-    return;
+    allBarbers=rows.map(barber=>({
+      ...barber,
+      profile:profileMap.get(barber.id)||null
+    }));
+
+    showMessage("");
+    filterBarbers();
+
+  } catch(error){
+    showMessage(
+      "Unable to load barbers: "+error.message
+    );
+    count.textContent="Unavailable";
   }
-
-  allBarbers = data || [];
-
-  showMessage("");
-
-  filterBarbers();
 }
 
-searchInput.addEventListener(
-  "input",
-  filterBarbers
-);
+searchInput.addEventListener("input",filterBarbers);
 
 await loadBarbers();
-
 </script>
 
 <script src="assets/capq-nav.js" defer></script>
