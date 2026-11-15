@@ -1,0 +1,452 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101114">
+<title>CAPQ Pro | Manage Barbers</title>
+<link rel="icon" href="assets/capq-mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/capq-brand.css">
+<style>
+:root{
+  --bg:#101114;--panel:#292d33;--gold:#d6b45c;
+  --text:#f7f7f4;--muted:#b9bcc3;--line:#454951;
+  --green:#16a77a;--red:#ef7777;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font:15px system-ui,-apple-system,Segoe UI,sans-serif}
+main{max-width:1050px;margin:auto;padding:22px 18px 70px}
+header{display:flex;justify-content:space-between;
+  align-items:center;gap:15px;border-bottom:1px solid var(--line);
+  padding-bottom:20px}
+.brand{display:flex;align-items:center;gap:12px;
+  text-decoration:none;color:var(--gold);font-size:23px;font-weight:800}
+.brand img{width:42px;height:42px}
+h1{font-size:clamp(27px,5vw,36px);margin:27px 0 7px}
+h2{font-size:21px;margin:0 0 12px}
+p{line-height:1.55}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.panel{background:#1c1f24;border:1px solid var(--line);
+  border-radius:15px;padding:20px;margin-top:22px}
+.topline{display:flex;justify-content:space-between;
+  align-items:center;gap:12px;flex-wrap:wrap}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.field{display:flex;flex-direction:column;gap:7px;margin:12px 0}
+label{font-weight:600;font-size:13px}
+input,select{width:100%;background:#111316;color:white;
+  border:1px solid #555b63;border-radius:9px;padding:12px;
+  font:inherit}
+input:focus,select:focus{outline:2px solid var(--gold);outline-offset:1px}
+button,.btn{display:inline-flex;align-items:center;justify-content:center;
+  gap:7px;background:var(--panel);border:1px solid #555b63;
+  border-radius:9px;color:white;text-decoration:none;
+  font:inherit;font-weight:600;padding:11px 15px;cursor:pointer}
+button:disabled{opacity:.55;cursor:not-allowed}
+.primary{background:var(--gold);color:#141414;border-color:var(--gold)}
+.danger{color:#ffb1b1;border-color:#8e4444}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
+.status{min-height:20px;color:var(--gold);white-space:pre-wrap}
+.barber{background:#24272c;border:1px solid #42464d;
+  border-radius:12px;padding:17px;margin-top:13px}
+.barber-head{display:flex;align-items:center;gap:13px}
+.avatar{width:58px;height:58px;border-radius:50%;
+  object-fit:cover;background:#111;border:1px solid #5a5e65}
+.avatar-fallback{display:grid;place-items:center;
+  color:var(--gold);font-size:24px;font-weight:800}
+.barber-name{font-size:18px;font-weight:750}
+.badge{display:inline-block;background:#3d3522;color:#f0d487;
+  padding:5px 9px;border-radius:20px;font-size:12px;margin-top:5px}
+.empty{padding:25px;text-align:center;color:var(--muted);
+  border:1px dashed #555;border-radius:12px}
+nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
+nav a{color:var(--gold)}
+[hidden]{display:none!important}
+@media(max-width:650px){
+  .grid{grid-template-columns:1fr}
+  .panel{padding:16px}
+  .actions .btn,.actions button{flex:1}
+}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <a class="brand" href="dashboard.html">
+    <img src="assets/capq-mark.svg" alt="">
+    CAPQ Pro
+  </a>
+  <button id="signout" type="button">Sign Out</button>
+</header>
+
+<h1>Manage Barbers</h1>
+<p class="muted" id="shopName">Verifying shop ownership...</p>
+<p id="message" class="status" role="status" aria-live="polite"></p>
+
+<div id="ownerContent" hidden>
+  <section class="panel">
+    <div class="topline">
+      <h2>Shop Barber Team</h2>
+      <button type="button" id="refresh">Refresh</button>
+    </div>
+    <p class="muted small">
+      Manage the barbers assigned to your shop.
+      Individual barbers manage their own availability
+      and Barber Connect profiles.
+    </p>
+    <div id="barberList"></div>
+  </section>
+
+  <section class="panel">
+    <h2>Add Barber</h2>
+    <p class="muted small">
+      The barber must already have a CAPQ Pro login.
+      Enter the Supabase Auth User ID for that account.
+      This page links an existing login to your shop;
+      it does not create a new login.
+    </p>
+
+    <form id="addForm">
+      <div class="grid">
+        <div class="field">
+          <label for="newName">Barber Name</label>
+          <input id="newName" maxlength="100"
+            placeholder="Barber's name" required>
+        </div>
+        <div class="field">
+          <label for="newUserId">Barber Auth User ID</label>
+          <input id="newUserId" required
+            placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx">
+        </div>
+      </div>
+      <button class="primary" id="addButton" type="submit">
+        Add Barber to Shop
+      </button>
+    </form>
+  </section>
+
+  <nav>
+    <a href="dashboard.html">Owner Dashboard</a>
+    <a href="barbers.html">Barber Directory</a>
+    <a href="checkin.html">Customer Check-In</a>
+  </nav>
+</div>
+
+<script type="module">
+import {createClient} from
+  "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+const supabase=createClient(
+  "https://nfazsevnpfmabsipkrrh.supabase.co",
+  "sb_publishable_FtcxTtmcHvtyu3m2KJRjqA_3Nzkk2La"
+);
+
+const SHOP_ID="061c8b27-0d31-404a-b227-2839639acb35";
+const $=id=>document.getElementById(id);
+
+let owner=null;
+let shop=null;
+let busy=false;
+
+function notify(text){
+  $("message").textContent=text||"";
+}
+
+function node(tag,cls,text){
+  const el=document.createElement(tag);
+  if(cls)el.className=cls;
+  if(text!==undefined)el.textContent=text;
+  return el;
+}
+
+function makeLink(label,url){
+  const a=node("a","btn",label);
+  a.href=url;
+  return a;
+}
+
+function validUuid(value){
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value);
+}
+
+async function verifyOwner(){
+  const {data:{user},error:authError}=
+    await supabase.auth.getUser();
+
+  if(authError)throw authError;
+
+  if(!user){
+    location.replace("login.html");
+    return false;
+  }
+
+  const {data,error}=await supabase
+    .from("barber_shops")
+    .select("id,name,owner_id")
+    .eq("id",SHOP_ID)
+    .eq("owner_id",user.id)
+    .maybeSingle();
+
+  if(error)throw error;
+
+  if(!data){
+    $("shopName").textContent="Owner access required.";
+    notify("This account is not the owner of this shop.");
+    return false;
+  }
+
+  owner=user;
+  shop=data;
+  $("shopName").textContent=data.name+" · Owner Management";
+  $("ownerContent").hidden=false;
+  return true;
+}
+
+async function loadBarbers(){
+  if(!owner||!shop)return;
+
+  const list=$("barberList");
+  list.replaceChildren(node("div","empty","Loading barbers..."));
+
+  const {data,error}=await supabase
+    .from("barbers")
+    .select("id,name,user_id,shop_id,availability_mode,accepts_walkins,accepts_appointments")
+    .eq("shop_id",SHOP_ID)
+    .order("name",{ascending:true});
+
+  if(error){
+    list.replaceChildren(
+      node("div","empty","Could not load barbers: "+error.message)
+    );
+    return;
+  }
+
+  const barbers=data||[];
+  if(!barbers.length){
+    list.replaceChildren(
+      node("div","empty","No barbers assigned to this shop yet.")
+    );
+    return;
+  }
+
+  const ids=barbers.map(b=>b.id);
+  let profiles=[];
+
+  const profileResult=await supabase
+    .from("barber_connect_profiles")
+    .select("barber_id,display_name,avatar_url,slug")
+    .in("barber_id",ids);
+
+  if(profileResult.error){
+    notify("Barbers loaded, but Barber Connect details could not be loaded: "+
+      profileResult.error.message);
+  }else{
+    profiles=profileResult.data||[];
+  }
+
+  const profileMap=new Map(profiles.map(p=>[p.barber_id,p]));
+  list.replaceChildren();
+
+  for(const barber of barbers){
+    const profile=profileMap.get(barber.id)||{};
+    const card=node("article","barber");
+    const head=node("div","barber-head");
+
+    let avatar;
+    if(profile.avatar_url &&
+       /^https:\/\//i.test(profile.avatar_url)){
+      avatar=node("img","avatar");
+      avatar.src=profile.avatar_url;
+      avatar.alt="";
+      avatar.referrerPolicy="no-referrer";
+    }else{
+      avatar=node("div","avatar avatar-fallback",
+        (profile.display_name||barber.name||"B")
+          .charAt(0).toUpperCase());
+    }
+
+    const info=node("div");
+    info.append(
+      node("div","barber-name",
+        profile.display_name||barber.name||"Barber"),
+      node("div","muted small",
+        "Account: "+(barber.user_id?"Connected":"Not connected"))
+    );
+
+    const labels={
+      both:"Walk-ins & Appointments",
+      walk_ins_only:"Walk-ins Only",
+      appointments_only:"Appointments Only",
+      unavailable:"Unavailable"
+    };
+
+    info.append(node("span","badge",
+      labels[barber.availability_mode]||
+      "Availability not configured"));
+
+    head.append(avatar,info);
+    card.append(head);
+
+    const actions=node("div","actions");
+
+    if(profile.slug){
+      actions.append(
+        makeLink("View Public Profile",
+          "barber-profile.html?slug="+
+          encodeURIComponent(profile.slug))
+      );
+    }
+
+    actions.append(
+      makeLink("View Directory","barbers.html")
+    );
+
+    const remove=node("button","danger","Remove From Shop");
+    remove.type="button";
+    remove.addEventListener("click",()=>removeBarber(barber));
+    actions.append(remove);
+
+    card.append(actions);
+    list.append(card);
+  }
+}
+
+async function addBarber(event){
+  event.preventDefault();
+  if(busy||!owner)return;
+
+  const name=$("newName").value.trim();
+  const userId=$("newUserId").value.trim();
+
+  if(!name||!validUuid(userId)){
+    notify("Enter a name and a valid Auth User ID.");
+    return;
+  }
+
+  busy=true;
+  $("addButton").disabled=true;
+  notify("Adding barber...");
+
+  try{
+    const {data:existing,error:checkError}=await supabase
+      .from("barbers")
+      .select("id,shop_id")
+      .eq("user_id",userId);
+
+    if(checkError)throw checkError;
+
+    if(existing&&existing.length){
+      throw new Error(
+        "This login already has a barber record. "+
+        "Review its existing shop assignment before adding it."
+      );
+    }
+
+    const {error}=await supabase
+      .from("barbers")
+      .insert({
+        name,
+        user_id:userId,
+        shop_id:SHOP_ID,
+        accepts_walkins:true,
+        accepts_appointments:true,
+        availability_mode:"both"
+      });
+
+    if(error)throw error;
+
+    $("addForm").reset();
+    notify("Barber added successfully.");
+    await loadBarbers();
+
+  }catch(err){
+    notify("Could not add barber: "+(err.message||String(err)));
+  }finally{
+    busy=false;
+    $("addButton").disabled=false;
+  }
+}
+
+async function removeBarber(barber){
+  if(busy||!owner)return;
+
+  const name=barber.name||"this barber";
+
+  const confirmed=confirm(
+    "Remove "+name+" from this shop?\n\n"+
+    "This deletes the shop's barber record. "+
+    "It does not delete their login account.\n\n"+
+    "Existing queue assignments or Barber Connect "+
+    "records may prevent deletion."
+  );
+
+  if(!confirmed)return;
+
+  busy=true;
+  notify("Checking barber assignments...");
+
+  try{
+    const {data:active,error:queueError}=await supabase
+      .from("capq_queue")
+      .select("id")
+      .eq("shop_id",SHOP_ID)
+      .eq("barber_id",barber.id)
+      .in("status",["Waiting","Accepted"])
+      .limit(1);
+
+    if(queueError)throw queueError;
+
+    if(active&&active.length){
+      throw new Error(
+        "This barber has an active queue assignment. "+
+        "Resolve that assignment before removing them."
+      );
+    }
+
+    const {error}=await supabase
+      .from("barbers")
+      .delete()
+      .eq("id",barber.id)
+      .eq("shop_id",SHOP_ID);
+
+    if(error)throw error;
+
+    notify(
+      "Removal request completed. Refreshing the shop roster..."
+    );
+    await loadBarbers();
+
+  }catch(err){
+    notify("Could not remove barber: "+(err.message||String(err)));
+  }finally{
+    busy=false;
+  }
+}
+
+$("refresh").addEventListener("click",loadBarbers);
+$("addForm").addEventListener("submit",addBarber);
+
+$("signout").addEventListener("click",async()=>{
+  const {error}=await supabase.auth.signOut();
+  if(error){
+    notify("Sign-out failed: "+error.message);
+    return;
+  }
+  location.replace("login.html");
+});
+
+try{
+  if(await verifyOwner()){
+    await loadBarbers();
+  }
+}catch(err){
+  $("shopName").textContent="Unable to load management.";
+  notify("Connection error: "+(err.message||String(err)));
+}
+</script>
+<script src="assets/capq-nav.js" defer></script>
+</main>
+</body>
+</html>
