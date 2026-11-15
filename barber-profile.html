@@ -2,196 +2,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Barber Connect | CAPQ Pro</title>
-  <meta name="description" content="View a barber's portfolio, social media, and booking information on CAPQ Pro.">
-  <style>
-    :root {
-      --bg: #101114;
-      --panel: #292d33;
-      --gold: #d6b45c;
-      --white: #f7f7f4;
-      --muted: #aeb2b8;
-      --green: #16a77a;
-      --border: #444850;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--white);
-      font-family: Arial, sans-serif;
-      line-height: 1.5;
-    }
-    a { color: inherit; }
-    header {
-      padding: 18px 24px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-    .brand {
-      color: var(--gold);
-      font-size: 23px;
-      font-weight: 800;
-      text-decoration: none;
-    }
-    .header-link {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 14px;
-    }
-    main {
-      max-width: 920px;
-      margin: 24px auto 70px;
-      padding: 0 16px;
-    }
-    .panel {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      margin-bottom: 20px;
-    }
-    .cover {
-      height: 245px;
-      background: linear-gradient(135deg, #363020, #141619);
-      background-position: center;
-      background-size: cover;
-    }
-    .profile-content {
-      padding: 22px;
-    }
-    .avatar {
-      width: 112px;
-      height: 112px;
-      border-radius: 50%;
-      border: 4px solid var(--panel);
-      object-fit: cover;
-      background: #17191d;
-      margin-top: -78px;
-      display: block;
-    }
-    .avatar-fallback {
-      width: 112px;
-      height: 112px;
-      border-radius: 50%;
-      border: 4px solid var(--panel);
-      background: #17191d;
-      margin-top: -78px;
-      display: grid;
-      place-items: center;
-      color: var(--gold);
-      font-size: 38px;
-      font-weight: bold;
-    }
-    h1 {
-      margin: 14px 0 4px;
-      font-size: 30px;
-    }
-    h2 {
-      color: var(--gold);
-      font-size: 19px;
-      margin: 0 0 14px;
-    }
-    .muted { color: var(--muted); }
-    .bio {
-      white-space: pre-wrap;
-      overflow-wrap: anywhere;
-      margin: 15px 0;
-    }
-    .actions, .socials {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
-    }
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      border-radius: 10px;
-      padding: 12px 18px;
-      background: var(--gold);
-      color: #101114;
-      font-weight: 700;
-      text-decoration: none;
-      border: 1px solid var(--gold);
-      cursor: pointer;
-      font: inherit;
-    }
-    .button.secondary {
-      background: #17191d;
-      color: var(--gold);
-    }
-    .button:focus-visible, a:focus-visible {
-      outline: 3px solid var(--green);
-      outline-offset: 3px;
-    }
-    .section-body { padding: 22px; }
-    .social-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 11px 14px;
-      border-radius: 10px;
-      background: #17191d;
-      border: 1px solid var(--border);
-      text-decoration: none;
-      font-size: 14px;
-    }
-    .social-link svg {
-      width: 23px;
-      height: 23px;
-      flex: none;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-    }
-    .gallery a {
-      display: block;
-      aspect-ratio: 1;
-      border-radius: 12px;
-      overflow: hidden;
-      background: #17191d;
-    }
-    .gallery img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .2s;
-    }
-    .gallery a:hover img { transform: scale(1.04); }
-    .status {
-      padding: 18px;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      margin-bottom: 20px;
-    }
-    .status.error { color: #ffb5b5; }
-    [hidden] { display: none !important; }
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-    @media (max-width: 600px) {
-      .cover { height: 180px; }
-      .profile-content, .section-body { padding: 16px; }
-      .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      h1 { font-size: 25px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101114">
+<meta name="description" content="Explore a barber's work, book an appointment and connect on CAPQ Pro.">
+<title>Barber Connect | CAPQ Pro</title>
+<link rel="icon" type="image/svg+xml" href="assets/capq-mark.svg">
+
+<style>
+:root {
+  --bg:#101114;
+  --panel:#1c1f24;
+  --card:#292d33;
+  --gold:#d6b45c;
+  --white:#f7f7f4;
+  --muted:#aeb2b8;
+  --green:#16a77a;
+  --border:#444850;
+}
+* {box-sizing:border-box}
+body {
+  margin:0;background:var(--bg);color:var(--white);
+  font-family:Arial,Helvetica,sans-serif;line-height:1.5;
+}
+a {color:inherit}
+button {font:inherit;cursor:pointer}
+[hidden] {display:none!important}
+header {
+  padding:16px max(18px,calc((100vw - 1000px)/2));
+  display:flex;justify-content:space-between;
+  align-items:center;gap:14px;
+  border-bottom:1px solid var(--border);
+}
+.brand {
+  color:var(--gold);font-weight:900;
+  font-size:22px;text-decoration:none;letter-spacing:.6px;
+}
+.header-link {
+  color:var(--muted);font-size:13px;text-decoration:none;
+}
+main {max-width:940px;margin:22px auto 65px;padding:0 16px}
+.panel {
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:16px;overflow:hidden;margin-bottom:18px;
+}
+.cover {
+  height:255px;
+  background:linear-gradient(135deg,#443821,#17191d);
+  background-position:center;background-size:cover;
+}
+.profile-content {padding:22px}
+.avatar,.avatar-fallback {
+  width:116px;height:116px;border-radius:50%;
+  border:5px solid var(--panel);margin-top:-82px;
+  background:#111318;
+}
+.avatar {object-fit:cover;display:block}
+.avatar-fallback {
+  display:grid;place-items:center;
+  font-size:40px;font-weight:900;color:var(--gold);
+}
+.eyebrow {
+  margin-top:16px;font-size:11px;
+  letter-spacing:2px;color:var(--gold);
+  text-transform:uppercase;font-weight:bold;
+}
+h1 {margin:5px 0 3px;font-size:clamp(27px,5vw,38px)}
+h2 {margin:0 0 8px;color:var(--gold);font-size:21px}
+.muted {color:var(--muted);font-size:14px}
+.bio {
+  white-space:pre-wrap;overflow-wrap:anywhere;
+  margin:15px 0 0;font-size:15px;
+}
+.section-body {padding:22px}
+.section-description {margin:0 0 16px;color:var(--muted);font-size:13px}
+.actions,.socials {
+  display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;
+}
+.button {
+  display:inline-flex;align-items:center;justify-content:center;
+  gap:8px;min-height:46px;padding:12px 18px;
+  border:1px solid var(--gold);border-radius:10px;
+  background:var(--gold);color:#101114;
+  font-size:14px;font-weight:bold;text-decoration:none;
+}
+.button.secondary {
+  background:#17191d;color:var(--gold);
+}
+.button.full {width:100%}
+.button:focus-visible,a:focus-visible {
+  outline:3px solid var(--green);outline-offset:3px;
+}
+.booking {
+  background:linear-gradient(135deg,#29271e,#1c1f24);
+  border-color:#7d693a;
+}
+.booking h2 {color:var(--white)}
+.social-link {
+  display:inline-flex;align-items:center;gap:10px;
+  padding:12px 15px;border-radius:10px;
+  background:#17191d;border:1px solid var(--border);
+  text-decoration:none;font-size:14px;
+}
+.social-link svg {width:23px;height:23px;flex:none}
+.gallery {
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+.gallery a {
+  display:block;aspect-ratio:1;overflow:hidden;
+  border-radius:12px;background:#17191d;
+}
+.gallery img {
+  display:block;width:100%;height:100%;
+  object-fit:cover;transition:transform .2s;
+}
+.gallery a:hover img {transform:scale(1.04)}
+.status {
+  padding:20px;background:var(--panel);
+  border:1px solid var(--border);border-radius:12px;
+  margin-bottom:20px;
+}
+.status.error {color:#ffb5b5}
+.owner-tools {
+  border-color:#7d693a;background:#26241e;
+}
+.owner-tools .actions {margin-top:12px}
+.share-status {min-height:18px;font-size:13px;color:#83e9ba}
+footer {
+  text-align:center;padding:25px;
+  font-size:12px;color:var(--muted);
+}
+@media(max-width:600px) {
+  .cover {height:190px}
+  .profile-content,.section-body {padding:17px}
+  .gallery {grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .actions .button {flex:1 1 150px}
+  .social-link {flex:1 1 130px}
+}
+</style>
 </head>
+
 <body>
 
 <header>
@@ -200,266 +151,385 @@
 </header>
 
 <main>
-  <div id="status" class="status" role="status">
-    Loading Barber Connect profile...
-  </div>
 
-  <div id="profile" hidden>
-    <section class="panel">
-      <div id="cover" class="cover"></div>
-      <div class="profile-content">
-        <img id="avatar" class="avatar" alt="Barber profile photo" hidden>
-        <div id="avatarFallback" class="avatar-fallback" hidden></div>
+<div id="status" class="status" role="status">
+  Loading Barber Connect profile...
+</div>
 
-        <h1 id="displayName"></h1>
-        <div class="muted">Barber Connect • CAPQ Pro</div>
-        <p id="bio" class="bio" hidden></p>
+<div id="profile" hidden>
 
-        <div class="actions">
-          <a id="booksyLink" class="button" target="_blank"
-             rel="noopener noreferrer" hidden>
-            Book Appointment
-          </a>
-          <a id="contactLink" class="button secondary" target="_blank"
-             rel="noopener noreferrer" hidden>
-            Contact
-          </a>
-          <button id="shareButton" class="button secondary" type="button">
-            Share Profile
-          </button>
-        </div>
+  <section class="panel">
+    <div id="cover" class="cover"></div>
+
+    <div class="profile-content">
+      <img id="avatar" class="avatar"
+           alt="Barber profile photo" hidden>
+
+      <div id="avatarFallback"
+           class="avatar-fallback" hidden></div>
+
+      <div class="eyebrow">Barber Connect • CAPQ Pro</div>
+
+      <h1 id="displayName"></h1>
+      <p class="muted" style="margin:0">
+        Professional Barber
+      </p>
+
+      <p id="bio" class="bio" hidden></p>
+    </div>
+  </section>
+
+  <section id="bookingSection" class="panel booking" hidden>
+    <div class="section-body">
+      <h2>Book &amp; Contact</h2>
+      <p class="section-description">
+        Ready for your next haircut? Book an appointment
+        or get in touch.
+      </p>
+
+      <div class="actions">
+        <a id="booksyLink" class="button"
+           target="_blank" rel="noopener noreferrer" hidden>
+          Book Appointment
+        </a>
+
+        <a id="contactLink" class="button secondary"
+           target="_blank" rel="noopener noreferrer" hidden>
+          Contact Me
+        </a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="socialSection" class="panel" hidden>
-      <div class="section-body">
-        <h2>Connect With Me</h2>
-        <div id="socialLinks" class="socials"></div>
-      </div>
-    </section>
+  <section id="socialSection" class="panel" hidden>
+    <div class="section-body">
+      <h2>Connect With Me</h2>
+      <p class="section-description">
+        Follow my work and stay connected.
+      </p>
+      <div id="socialLinks" class="socials"></div>
+    </div>
+  </section>
 
-    <section id="gallerySection" class="panel" hidden>
-      <div class="section-body">
-        <h2>My Haircut Portfolio</h2>
-        <div id="gallery" class="gallery"></div>
+  <section id="gallerySection" class="panel" hidden>
+    <div class="section-body">
+      <h2>My Haircut Portfolio</h2>
+      <p class="section-description">
+        Check out some of my recent work.
+      </p>
+      <div id="gallery" class="gallery"></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="section-body">
+      <h2>Share My Barber Connect</h2>
+      <p class="section-description">
+        Share this profile with someone looking for a barber.
+      </p>
+
+      <button id="shareButton" class="button secondary full"
+              type="button">
+        Share Profile
+      </button>
+
+      <p id="shareStatus" class="share-status"
+         role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section id="ownerTools" class="panel owner-tools" hidden>
+    <div class="section-body">
+      <h2>My Barber Portal</h2>
+      <p class="section-description">
+        You're viewing your public Connect page.
+        Customers see the profile above.
+      </p>
+
+      <div class="actions">
+        <a class="button" href="barber-dashboard.html">
+          My Dashboard
+        </a>
+        <a class="button secondary"
+           href="barber-profile-edit.html">
+          Edit My Profile
+        </a>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
+
+</div>
 </main>
 
-<footer>Powered by CAPQ Pro • Barber Connect</footer>
+<footer>
+  Powered by CAPQ Pro • Barber Connect
+</footer>
 
 <script type="module">
-  import { createClient } from
-    "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+import {createClient} from
+  "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
-  const supabase = createClient(
-    "https://nfazsevnpfmabsipkrrh.supabase.co",
-    "sb_publishable_FtcxTtmcHvtyu3m2KJRjqA_3Nzkk2La"
-  );
+const supabase=createClient(
+  "https://nfazsevnpfmabsipkrrh.supabase.co",
+  "sb_publishable_FtcxTtmcHvtyu3m2KJRjqA_3Nzkk2La"
+);
 
-  const $ = id => document.getElementById(id);
+const $=id=>document.getElementById(id);
+const params=new URLSearchParams(location.search);
+const slug=params.get("slug")?.trim().toLowerCase();
 
-  const params = new URLSearchParams(window.location.search);
-  const slug = params.get("slug")?.trim().toLowerCase();
+const icons={
+  instagram:`<svg viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="1.8"
+    aria-hidden="true">
+    <rect x="2.5" y="2.5" width="19" height="19" rx="5"/>
+    <circle cx="12" cy="12" r="4.2"/>
+    <circle cx="17.6" cy="6.5" r="1"
+      fill="currentColor" stroke="none"/>
+  </svg>`,
+  tiktok:`<svg viewBox="0 0 24 24"
+    fill="currentColor" aria-hidden="true">
+    <path d="M16.7 2c.3 2.5 1.7 4 4.3 4.2v3.5
+      a9.2 9.2 0 0 1-4.3-1.2v7.1
+      a7 7 0 1 1-7-7c.4 0 .9 0 1.3.1v3.7
+      a3.5 3.5 0 1 0 2.1 3.2V2h3.6Z"/>
+  </svg>`,
+  youtube:`<svg viewBox="0 0 24 24"
+    fill="currentColor" aria-hidden="true">
+    <path d="M21.5 7.2a2.7 2.7 0 0 0-1.9-1.9
+      C17.9 4.8 12 4.8 12 4.8s-5.9 0-7.6.5
+      a2.7 2.7 0 0 0-1.9 1.9A28 28 0 0 0
+      2 12a28 28 0 0 0 .5 4.8
+      2.7 2.7 0 0 0 1.9 1.9
+      c1.7.5 7.6.5 7.6.5s5.9 0 7.6-.5
+      a2.7 2.7 0 0 0 1.9-1.9
+      A28 28 0 0 0 22 12
+      a28 28 0 0 0-.5-4.8ZM10 15.5v-7
+      l6 3.5-6 3.5Z"/>
+  </svg>`
+};
 
-  const icons = {
-    instagram: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.8" aria-hidden="true">
-      <rect x="2.5" y="2.5" width="19" height="19" rx="5"/>
-      <circle cx="12" cy="12" r="4.2"/>
-      <circle cx="17.6" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-    </svg>`,
-    tiktok: `<svg viewBox="0 0 24 24" fill="currentColor"
-      aria-hidden="true">
-      <path d="M16.7 2c.3 2.5 1.7 4 4.3 4.2v3.5a9.2 9.2 0 0 1-4.3-1.2v7.1
-      a7 7 0 1 1-7-7c.4 0 .9 0 1.3.1v3.7a3.5 3.5 0 1 0 2.1 3.2V2h3.6Z"/>
-    </svg>`,
-    youtube: `<svg viewBox="0 0 24 24" fill="currentColor"
-      aria-hidden="true">
-      <path d="M21.5 7.2a2.7 2.7 0 0 0-1.9-1.9C17.9 4.8 12 4.8 12 4.8s-5.9
-      0-7.6.5a2.7 2.7 0 0 0-1.9 1.9A28 28 0 0 0 2 12a28 28 0 0 0
-      .5 4.8 2.7 2.7 0 0 0 1.9 1.9c1.7.5 7.6.5 7.6.5s5.9 0 7.6-.5a2.7
-      2.7 0 0 0 1.9-1.9A28 28 0 0 0 22 12a28 28 0 0 0-.5-4.8ZM10
-      15.5v-7l6 3.5-6 3.5Z"/>
-    </svg>`
-  };
+function safeHttps(value) {
+  if(typeof value!=="string"||!value.trim())return null;
+  try {
+    const url=new URL(value.trim());
+    return url.protocol==="https:"?url.href:null;
+  }catch {
+    return null;
+  }
+}
 
-  function safeHttps(value) {
-    if (typeof value !== "string" || !value.trim()) return null;
-    try {
-      const url = new URL(value.trim());
-      return url.protocol === "https:" ? url.href : null;
-    } catch {
-      return null;
-    }
+function showError(text) {
+  $("status").textContent=text;
+  $("status").classList.add("error");
+  $("status").hidden=false;
+  $("profile").hidden=true;
+}
+
+function setExternalLink(id,value) {
+  const link=$(id);
+  const url=safeHttps(value);
+
+  if(url) {
+    link.href=url;
+    link.hidden=false;
+  }else {
+    link.hidden=true;
+    link.removeAttribute("href");
+  }
+  return Boolean(url);
+}
+
+function addSocial(label,value,iconName) {
+  const url=safeHttps(value);
+  if(!url)return;
+
+  const link=document.createElement("a");
+  link.className="social-link";
+  link.href=url;
+  link.target="_blank";
+  link.rel="noopener noreferrer";
+  link.setAttribute("aria-label",label);
+  link.innerHTML=icons[iconName];
+
+  const name=document.createElement("span");
+  name.textContent=label;
+  link.appendChild(name);
+
+  $("socialLinks").appendChild(link);
+}
+
+function renderProfile(data) {
+  const name=data.display_name||"Barber";
+  $("displayName").textContent=name;
+  document.title=name+" | Barber Connect";
+
+  const bio=typeof data.bio==="string"
+    ? data.bio.trim():"";
+
+  $("bio").textContent=bio;
+  $("bio").hidden=!bio;
+
+  const cover=safeHttps(data.cover_url);
+  if(cover) {
+    $("cover").style.backgroundImage=
+      'linear-gradient(0deg,rgba(0,0,0,.2),'+
+      'rgba(0,0,0,.1)),url("'+
+      cover.replace(/["\\]/g,"")+'")';
   }
 
-  function showError(message) {
-    $("status").textContent = message;
-    $("status").classList.add("error");
-    $("status").hidden = false;
-    $("profile").hidden = true;
+  const avatar=safeHttps(data.avatar_url);
+  const fallback=$("avatarFallback");
+
+  fallback.textContent=name.trim().charAt(0).toUpperCase()||"B";
+
+  if(avatar) {
+    $("avatar").src=avatar;
+    $("avatar").hidden=false;
+    fallback.hidden=true;
+
+    $("avatar").onerror=()=>{
+      $("avatar").hidden=true;
+      fallback.hidden=false;
+    };
+  }else {
+    $("avatar").hidden=true;
+    fallback.hidden=false;
   }
 
-  function setExternalLink(id, value) {
-    const url = safeHttps(value);
-    const link = $(id);
-    if (url) {
-      link.href = url;
-      link.hidden = false;
-    } else {
-      link.hidden = true;
-      link.removeAttribute("href");
-    }
+  const hasBooksy=setExternalLink("booksyLink",data.booksy_url);
+  const hasContact=setExternalLink("contactLink",data.contact_url);
+  $("bookingSection").hidden=!(hasBooksy||hasContact);
+
+  $("socialLinks").replaceChildren();
+  addSocial("Instagram",data.instagram_url,"instagram");
+  addSocial("TikTok",data.tiktok_url,"tiktok");
+  addSocial("YouTube",data.youtube_url,"youtube");
+
+  $("socialSection").hidden=
+    !$("socialLinks").children.length;
+
+  $("gallery").replaceChildren();
+
+  const photos=Array.isArray(data.gallery_urls)
+    ? data.gallery_urls:[];
+
+  for(const value of photos) {
+    const url=safeHttps(value);
+    if(!url)continue;
+
+    const link=document.createElement("a");
+    link.href=url;
+    link.target="_blank";
+    link.rel="noopener noreferrer";
+    link.setAttribute("aria-label","Open haircut photo");
+
+    const img=document.createElement("img");
+    img.src=url;
+    img.alt="Haircut portfolio photo";
+    img.loading="lazy";
+
+    link.appendChild(img);
+    $("gallery").appendChild(link);
   }
 
-  function addSocial(label, value, iconName) {
-    const url = safeHttps(value);
-    if (!url) return;
+  $("gallerySection").hidden=
+    !$("gallery").children.length;
 
-    const link = document.createElement("a");
-    link.className = "social-link";
-    link.href = url;
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-    link.setAttribute("aria-label", label);
-    link.innerHTML = icons[iconName];
+  $("status").hidden=true;
+  $("profile").hidden=false;
+}
 
-    const name = document.createElement("span");
-    name.textContent = label;
-    link.appendChild(name);
+async function checkProfileOwner(barberId) {
+  if(!barberId)return;
 
-    $("socialLinks").appendChild(link);
+  try {
+    const {data:{user},error:authError}=
+      await supabase.auth.getUser();
+
+    if(authError||!user)return;
+
+    const {data:barber,error}=await supabase
+      .from("barbers")
+      .select("id")
+      .eq("id",barberId)
+      .eq("user_id",user.id)
+      .maybeSingle();
+
+    if(!error&&barber) {
+      $("ownerTools").hidden=false;
+    }
+  }catch(error) {
+    console.warn("Unable to check profile ownership.");
+  }
+}
+
+$("shareButton").addEventListener("click",async()=>{
+  const url=new URL("barber-profile.html",location.href);
+  url.searchParams.set("slug",slug||"");
+  const shareUrl=url.href;
+
+  try {
+    if(navigator.share) {
+      await navigator.share({
+        title:document.title,
+        url:shareUrl
+      });
+    }else if(navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(shareUrl);
+      $("shareStatus").textContent="Profile link copied!";
+    }else {
+      window.prompt("Copy your profile link:",shareUrl);
+    }
+  }catch(error) {
+    if(error.name!=="AbortError") {
+      $("shareStatus").textContent=
+        "Unable to share automatically.";
+      window.prompt("Copy your profile link:",shareUrl);
+    }
+  }
+});
+
+async function loadProfile() {
+  if(!slug||!/^[a-z0-9-]+$/.test(slug)) {
+    showError("No valid barber profile name was provided.");
+    return;
   }
 
-  function renderProfile(data) {
-    $("displayName").textContent = data.display_name || "Barber";
-    document.title = (data.display_name || "Barber") + " | CAPQ Pro";
+  try {
+    const {data,error}=await supabase
+      .from("barber_connect_profiles")
+      .select(
+        "barber_id,display_name,bio,slug,avatar_url,"+
+        "cover_url,booksy_url,contact_url,"+
+        "instagram_url,tiktok_url,youtube_url,gallery_urls"
+      )
+      .eq("slug",slug)
+      .maybeSingle();
 
-    const bio = typeof data.bio === "string" ? data.bio.trim() : "";
-    $("bio").textContent = bio;
-    $("bio").hidden = !bio;
+    if(error)throw error;
 
-    const cover = safeHttps(data.cover_url);
-    if (cover) {
-      $("cover").style.backgroundImage =
-        `linear-gradient(0deg,rgba(0,0,0,.2),rgba(0,0,0,.1)),url("${cover.replace(/["\\]/g, "")}")`;
-    }
-
-    const avatar = safeHttps(data.avatar_url);
-    if (avatar) {
-      $("avatar").src = avatar;
-      $("avatar").hidden = false;
-      $("avatarFallback").hidden = true;
-      $("avatar").onerror = () => {
-        $("avatar").hidden = true;
-        $("avatarFallback").hidden = false;
-      };
-    } else {
-      $("avatar").hidden = true;
-      $("avatarFallback").hidden = false;
-    }
-
-    $("avatarFallback").textContent =
-      (data.display_name || "B").trim().charAt(0).toUpperCase();
-
-    setExternalLink("booksyLink", data.booksy_url);
-    setExternalLink("contactLink", data.contact_url);
-
-    $("socialLinks").replaceChildren();
-    addSocial("Instagram", data.instagram_url, "instagram");
-    addSocial("TikTok", data.tiktok_url, "tiktok");
-    addSocial("YouTube", data.youtube_url, "youtube");
-
-    $("socialSection").hidden = !$("socialLinks").children.length;
-
-    $("gallery").replaceChildren();
-    const photos = Array.isArray(data.gallery_urls)
-      ? data.gallery_urls
-      : [];
-
-    for (const value of photos) {
-      const url = safeHttps(value);
-      if (!url) continue;
-
-      const link = document.createElement("a");
-      link.href = url;
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-      link.setAttribute("aria-label", "Open haircut portfolio photo");
-
-      const img = document.createElement("img");
-      img.src = url;
-      img.alt = "Haircut portfolio photo";
-      img.loading = "lazy";
-
-      link.appendChild(img);
-      $("gallery").appendChild(link);
-    }
-
-    $("gallerySection").hidden = !$("gallery").children.length;
-
-    $("status").hidden = true;
-    $("profile").hidden = false;
-  }
-
-  $("shareButton").addEventListener("click", async () => {
-    const url = window.location.href;
-
-    try {
-      if (navigator.share) {
-        await navigator.share({
-          title: document.title,
-          url
-        });
-      } else if (navigator.clipboard?.writeText) {
-        await navigator.clipboard.writeText(url);
-        $("shareButton").textContent = "Link Copied!";
-        setTimeout(() => {
-          $("shareButton").textContent = "Share Profile";
-        }, 2000);
-      } else {
-        window.prompt("Copy your profile link:", url);
-      }
-    } catch (error) {
-      if (error.name !== "AbortError") {
-        window.prompt("Copy your profile link:", url);
-      }
-    }
-  });
-
-  async function loadProfile() {
-    if (!slug || !/^[a-z0-9-]+$/.test(slug)) {
-      showError("No valid barber profile name was provided.");
+    if(!data) {
+      showError("This Barber Connect profile is not available.");
       return;
     }
 
-    try {
-      const { data, error } = await supabase
-        .from("barber_connect_profiles")
-        .select(
-          "display_name,bio,slug,avatar_url,cover_url,booksy_url," +
-          "contact_url,instagram_url,tiktok_url,youtube_url,gallery_urls"
-        )
-        .eq("slug", slug)
-        .maybeSingle();
+    renderProfile(data);
 
-      if (error) throw error;
+    // Only show private management links to the
+    // signed-in barber who owns this exact profile.
+    checkProfileOwner(data.barber_id);
 
-      if (!data) {
-        showError("This Barber Connect profile is not available.");
-        return;
-      }
-
-      renderProfile(data);
-    } catch (error) {
-      console.error(error);
-      showError("Unable to load this Barber Connect profile right now.");
-    }
+  }catch(error) {
+    console.error(error);
+    showError(
+      "Unable to load this Barber Connect profile right now."
+    );
   }
+}
 
-  loadProfile();
+loadProfile();
 </script>
+
 </body>
 </html>
