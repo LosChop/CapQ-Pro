@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#101114">
 <title>Edit Barber Connect | CAPQ Pro</title>
+
 <style>
 :root{
   --bg:#101114;
@@ -18,147 +19,239 @@
 }
 *{box-sizing:border-box}
 body{
-  margin:0;background:var(--bg);color:var(--white);
+  margin:0;
+  background:var(--bg);
+  color:var(--white);
   font:15px/1.5 Arial,sans-serif;
 }
 header{
-  padding:20px;border-bottom:1px solid var(--border);
-  display:flex;justify-content:space-between;
-  align-items:center;flex-wrap:wrap;gap:12px;
+  padding:20px;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
 }
-.brand{color:var(--gold);font-size:23px;font-weight:bold}
+.brand{
+  color:var(--gold);
+  font-size:23px;
+  font-weight:bold;
+}
 a{color:var(--gold)}
 .back{text-decoration:none;font-size:14px}
-main{max-width:860px;margin:30px auto;padding:0 16px 60px}
+main{
+  max-width:860px;
+  margin:30px auto;
+  padding:0 16px 60px;
+}
 h1{margin-bottom:5px}
-h2{color:var(--gold);font-size:19px;margin-top:0}
+h2{
+  color:var(--gold);
+  font-size:19px;
+  margin-top:0;
+}
 .subtitle,.hint{color:var(--muted)}
 .subtitle{margin-bottom:24px}
 .panel{
-  background:var(--panel);border:1px solid var(--border);
-  border-radius:14px;padding:22px;margin-bottom:20px;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:22px;
+  margin-bottom:20px;
 }
 label{
-  display:block;margin:15px 0 6px;
-  font-weight:bold;font-size:14px;
+  display:block;
+  margin:15px 0 6px;
+  font-weight:bold;
+  font-size:14px;
 }
 input,textarea{
-  width:100%;background:#17191d;
-  border:1px solid #555a63;border-radius:8px;
-  padding:12px;color:white;font:inherit;
+  width:100%;
+  background:#17191d;
+  border:1px solid #555a63;
+  border-radius:8px;
+  padding:12px;
+  color:white;
+  font:inherit;
 }
-input:focus,textarea:focus{outline:2px solid var(--gold)}
-textarea{min-height:110px;resize:vertical}
-.hint{font-size:12px;margin:6px 0 12px}
+input:focus,textarea:focus{
+  outline:2px solid var(--gold);
+}
+textarea{
+  min-height:110px;
+  resize:vertical;
+}
+.hint{
+  font-size:12px;
+  margin:6px 0 12px;
+}
 .preview{
-  max-width:100%;max-height:240px;object-fit:cover;
-  border-radius:10px;margin-top:12px;display:none;
+  max-width:100%;
+  max-height:240px;
+  object-fit:cover;
+  border-radius:10px;
+  margin-top:12px;
+  display:none;
 }
 .avatar{
-  width:110px;height:110px;border-radius:50%;
+  width:110px;
+  height:110px;
+  border-radius:50%;
   object-fit:cover;
 }
 button,.upload-label{
-  display:inline-flex;align-items:center;
-  justify-content:center;background:var(--gold);
-  color:#101114;padding:13px 18px;border:0;
-  border-radius:9px;font-weight:bold;cursor:pointer;
-  font-size:14px;text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--gold);
+  color:#101114;
+  padding:13px 18px;
+  border:0;
+  border-radius:9px;
+  font-weight:bold;
+  cursor:pointer;
+  font-size:14px;
+  text-decoration:none;
 }
-button:disabled{opacity:.55;cursor:wait}
+button:disabled{
+  opacity:.55;
+  cursor:wait;
+}
 .secondary{
-  display:inline-flex;align-items:center;
-  justify-content:center;background:#17191d;
-  color:var(--gold);border:1px solid var(--gold);
-  padding:12px 18px;border-radius:9px;
-  text-decoration:none;font-weight:bold;
+  display:inline-block;
+  background:#17191d;
+  color:var(--gold);
+  border:1px solid var(--gold);
+  padding:12px 18px;
+  border-radius:9px;
+  text-decoration:none;
 }
 .status{
-  padding:12px;border-radius:8px;margin:15px 0;
-  background:#343840;white-space:pre-wrap;
+  padding:12px;
+  border-radius:8px;
+  margin:15px 0;
+  background:#343840;
+  white-space:pre-wrap;
 }
-.status.error{border:1px solid #e56b6b;color:#ffb5b5}
-.status.success{border:1px solid var(--green);color:#a8f0d5}
+.status.error{
+  border:1px solid #e56b6b;
+  color:#ffb5b5;
+}
+.status.success{
+  border:1px solid var(--green);
+  color:#a8f0d5;
+}
 .actions{
-  display:flex;flex-wrap:wrap;
-  align-items:center;gap:12px;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:12px;
 }
 .upload-label{margin-top:12px}
 .file-input{
-  position:absolute;width:1px;height:1px;
-  opacity:0;overflow:hidden;
+  position:absolute;
+  width:1px;
+  height:1px;
+  opacity:0;
+  overflow:hidden;
 }
 .gallery{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(125px,1fr));
-  gap:12px;margin:15px 0;
+  grid-template-columns:
+    repeat(auto-fill,minmax(125px,1fr));
+  gap:12px;
+  margin:15px 0;
 }
 .photo-card{
-  background:#17191d;border:1px solid #555a63;
-  border-radius:10px;padding:8px;
+  background:#17191d;
+  border:1px solid #555a63;
+  border-radius:10px;
+  padding:8px;
 }
 .photo-card img{
-  width:100%;height:120px;
-  object-fit:cover;border-radius:7px;
+  width:100%;
+  height:120px;
+  object-fit:cover;
+  border-radius:7px;
 }
 .photo-card button{
-  width:100%;background:#4a2428;
-  color:#ffb5b5;margin-top:7px;
-  padding:9px;font-size:12px;
+  width:100%;
+  background:#4a2428;
+  color:#ffb5b5;
+  margin-top:7px;
+  padding:9px;
+  font-size:12px;
 }
 .help{
-  background:#22251f;border:1px solid #6d6037;
-  border-radius:10px;padding:13px;
-  margin-top:12px;font-size:13px;
+  background:#22251f;
+  border:1px solid #6d6037;
+  border-radius:10px;
+  padding:13px;
+  margin-top:12px;
+  font-size:13px;
 }
 .help summary{
-  cursor:pointer;color:var(--gold);font-weight:bold;
+  cursor:pointer;
+  color:var(--gold);
+  font-weight:bold;
 }
 .help p{margin:9px 0}
 .upload-note{
-  font-size:13px;color:var(--muted);margin-top:8px;
+  font-size:13px;
+  color:var(--muted);
+  margin-top:8px;
 }
 .link-preview{
-  font-size:12px;color:#a8f0d5;
-  overflow-wrap:anywhere;margin-top:5px;
+  font-size:12px;
+  color:#a8f0d5;
+  overflow-wrap:anywhere;
+  margin-top:5px;
 }
 .profile-tools{
-  background:#22251f;border:1px solid #76663c;
-  border-radius:14px;padding:20px;margin-bottom:20px;
+  background:#22251f;
+  border:1px solid #76663c;
+  border-radius:14px;
+  padding:20px;
+  margin:0 0 20px;
 }
-.profile-tools h2{margin-bottom:8px}
+.profile-tools h2{
+  margin:0 0 8px;
+}
 .profile-tools p{
-  color:var(--muted);font-size:13px;
+  font-size:13px;
+  color:var(--muted);
+  margin:8px 0 14px;
 }
-.profile-url{
-  font-size:12px;color:var(--gold);
-  overflow-wrap:anywhere;margin:12px 0;
+.view-button{
+  background:var(--gold);
+  color:#101114;
+  border:0;
 }
-.profile-view{
-  display:inline-flex;align-items:center;
-  justify-content:center;background:var(--gold);
-  color:#101114;border-radius:9px;
-  padding:13px 18px;font-weight:bold;
-  text-decoration:none;
-}
-.profile-view.disabled{
-  opacity:.5;pointer-events:none;
-}
-.save-note{
-  font-size:12px;color:var(--muted);
+.profile-link-text{
+  font-size:12px;
+  color:var(--muted);
+  overflow-wrap:anywhere;
   margin-top:12px;
 }
-[hidden]{display:none!important}
+[hidden]{
+  display:none!important;
+}
 @media(max-width:600px){
   .panel{padding:16px}
   h1{font-size:26px}
-  .actions button,.actions a{width:100%}
-  .profile-view{width:100%}
+  .profile-tools .view-button{
+    width:100%;
+  }
+  .actions button{
+    width:100%;
+  }
 }
 </style>
 </head>
 
 <body>
+
 <header>
   <div class="brand">CAPQ PRO</div>
   <a class="back" href="barber-dashboard.html">
@@ -167,262 +260,289 @@ button:disabled{opacity:.55;cursor:wait}
 </header>
 
 <main>
-  <h1>Edit Barber Connect</h1>
-  <p class="subtitle">
-    Your digital barber business card, portfolio,
-    booking links, and social connections.
+
+<h1>Edit Barber Connect</h1>
+<p class="subtitle">
+  Your digital barber business card, portfolio,
+  booking links, and social connections.
+</p>
+
+<div id="status" class="status"
+     role="status" aria-live="polite">
+  Connecting to your barber account...
+</div>
+
+<section id="profileTools" class="profile-tools" hidden>
+  <h2>My Live Barber Connect</h2>
+
+  <p>
+    See your page exactly as customers see it,
+    including your profile photo, cover picture,
+    portfolio and booking links.
   </p>
 
-  <div id="status" class="status"
-       role="status" aria-live="polite">
-    Connecting to your barber account...
-  </div>
+  <button id="topViewProfile"
+          class="view-button"
+          type="button">
+    👁 View My Live Profile
+  </button>
 
-  <div id="profileTools" class="profile-tools" hidden>
-    <h2>My Live Barber Connect</h2>
-    <p>
-      View your public page exactly as customers see it.
-      Your saved photos, booking links, and social media
-      will appear there.
+  <div id="profileLinkText"
+       class="profile-link-text"></div>
+</section>
+
+<form id="profileForm" hidden>
+
+  <section class="panel">
+    <h2>Basic Information</h2>
+
+    <label for="display_name">Display Name</label>
+    <input id="display_name"
+           maxlength="100" required>
+
+    <label for="bio">About You</label>
+    <textarea id="bio" maxlength="1000"
+      placeholder="Tell clients about your barbering experience."></textarea>
+
+    <label for="slug">Public Profile Name</label>
+    <input id="slug"
+           maxlength="60"
+           pattern="[a-z0-9-]+"
+           placeholder="loscuts">
+
+    <p class="hint">
+      Lowercase letters, numbers and hyphens.
+      Changing this changes your public profile URL.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Profile Pictures</h2>
+
+    <label>Profile Picture</label>
+    <p class="hint">
+      Choose a photo directly from your iPhone,
+      Android, or computer.
     </p>
 
-    <div id="profileUrl" class="profile-url"></div>
+    <label class="upload-label" for="avatarFile">
+      Upload Profile Picture
+    </label>
+    <input class="file-input"
+           id="avatarFile"
+           type="file"
+           accept="image/*">
 
-    <a id="topViewProfile"
-       class="profile-view disabled"
-       target="_blank"
-       rel="noopener noreferrer"
-       aria-disabled="true">
-      👁 View My Live Profile
-    </a>
+    <div>
+      <img id="avatarPreview"
+           class="preview avatar"
+           alt="Profile picture preview">
+    </div>
 
-    <p id="viewHint" class="save-note"></p>
-  </div>
+    <label>Cover Picture</label>
+    <p class="hint">
+      Choose a wide photo to appear at the top of
+      your public Barber Connect page.
+    </p>
 
-  <form id="profileForm" hidden>
+    <label class="upload-label" for="coverFile">
+      Upload Cover Picture
+    </label>
+    <input class="file-input"
+           id="coverFile"
+           type="file"
+           accept="image/*">
 
-    <section class="panel">
-      <h2>Basic Information</h2>
+    <div>
+      <img id="coverPreview"
+           class="preview"
+           alt="Cover picture preview">
+    </div>
 
-      <label for="display_name">Display Name</label>
-      <input id="display_name" maxlength="100" required>
+    <p class="upload-note">
+      Photos upload when you press Save Barber Connect.
+      Maximum 10 MB per photo.
+    </p>
+  </section>
 
-      <label for="bio">About You</label>
-      <textarea id="bio" maxlength="1000"
-        placeholder="Tell clients about your barbering experience."></textarea>
+  <section class="panel">
+    <h2>Booking &amp; Contact</h2>
 
-      <label for="slug">Public Profile Name</label>
-      <input id="slug" maxlength="60"
-        pattern="[a-z0-9-]+"
-        placeholder="loscuts">
+    <label for="booksy_url">Booksy Booking Link</label>
+    <input id="booksy_url"
+           type="text"
+           inputmode="url"
+           placeholder="Paste your Booksy booking link">
 
-      <p class="hint">
-        Lowercase letters, numbers and hyphens.
-        Changing this changes your public profile URL.
+    <p class="hint">
+      Paste the complete Booksy link.
+      You do not need to type https:// if your
+      link already contains it.
+    </p>
+
+    <details class="help">
+      <summary>
+        Where do I find my Booksy booking link?
+      </summary>
+      <p>
+        Open your Booksy business profile or booking page.
+        Use the Share option if available, or open your
+        public booking page in a browser and copy its address.
       </p>
-    </section>
-
-    <section class="panel">
-      <h2>Profile Pictures</h2>
-
-      <label>Profile Picture</label>
-      <p class="hint">
-        Choose a photo directly from your iPhone,
-        Android, or computer.
+      <p>
+        Paste that address above. It should lead clients
+        directly to your booking page.
       </p>
+    </details>
 
-      <label class="upload-label" for="avatarFile">
-        Upload Profile Picture
-      </label>
-      <input class="file-input" id="avatarFile"
-        type="file" accept="image/*">
+    <label for="contact_url">
+      Contact Website or Link
+    </label>
+    <input id="contact_url"
+           type="text"
+           inputmode="url"
+           placeholder="loscuts.com">
 
-      <div>
-        <img id="avatarPreview"
-          class="preview avatar"
-          alt="Profile picture preview">
-      </div>
+    <p class="hint">
+      Enter your website, such as loscuts.com.
+      We'll add https:// automatically if needed.
+    </p>
+  </section>
 
-      <label>Cover Picture</label>
-      <p class="hint">
-        Choose a wide photo to appear at the top
-        of your public Barber Connect page.
+  <section class="panel">
+    <h2>Social Media</h2>
+
+    <p class="hint">
+      Enter your username or paste your full profile link.
+      CAPQ Pro will build the correct link.
+    </p>
+
+    <label for="instagram_url">Instagram</label>
+    <input id="instagram_url"
+           type="text"
+           autocapitalize="off"
+           autocomplete="off"
+           placeholder="@loscuts90">
+
+    <p class="hint">
+      Example: @loscuts90 or instagram.com/loscuts90
+    </p>
+    <div class="link-preview"
+         id="instagramPreview"></div>
+
+    <label for="tiktok_url">TikTok</label>
+    <input id="tiktok_url"
+           type="text"
+           autocapitalize="off"
+           autocomplete="off"
+           placeholder="@loscuts90">
+
+    <p class="hint">
+      Example: @loscuts90 or tiktok.com/@loscuts90
+    </p>
+    <div class="link-preview"
+         id="tiktokPreview"></div>
+
+    <label for="youtube_url">YouTube</label>
+    <input id="youtube_url"
+           type="text"
+           autocapitalize="off"
+           autocomplete="off"
+           placeholder="@loscuts90">
+
+    <p class="hint">
+      Enter your YouTube handle or paste your channel link.
+    </p>
+    <div class="link-preview"
+         id="youtubePreview"></div>
+
+    <details class="help">
+      <summary>
+        How do I copy my social media profile links?
+      </summary>
+      <p>
+        <strong>Instagram:</strong>
+        Open your profile and use Share Profile
+        or Copy Link, if available.
       </p>
-
-      <label class="upload-label" for="coverFile">
-        Upload Cover Picture
-      </label>
-      <input class="file-input" id="coverFile"
-        type="file" accept="image/*">
-
-      <div>
-        <img id="coverPreview"
-          class="preview"
-          alt="Cover picture preview">
-      </div>
-
-      <p class="upload-note">
-        Photos upload when you press Save Barber Connect.
-        Maximum 10 MB per photo.
+      <p>
+        <strong>TikTok:</strong>
+        Open Profile, tap Share Profile, then Copy Link.
       </p>
-    </section>
-
-    <section class="panel">
-      <h2>Booking &amp; Contact</h2>
-
-      <label for="booksy_url">Booksy Booking Link</label>
-      <input id="booksy_url" type="text"
-        inputmode="url"
-        placeholder="Paste your Booksy booking link">
-
-      <p class="hint">
-        Paste the complete Booksy link.
-        You do not need to type https:// if your
-        link already contains it.
+      <p>
+        <strong>YouTube:</strong>
+        Open your channel and use Share or Copy Link.
       </p>
-
-      <details class="help">
-        <summary>Where do I find my Booksy booking link?</summary>
-        <p>
-          Open your Booksy business profile or booking page.
-          Use the Share option if available, or open your
-          public booking page in a browser and copy its address.
-        </p>
-        <p>
-          Paste that address above. It should lead clients
-          directly to your booking page.
-        </p>
-      </details>
-
-      <label for="contact_url">Contact Website or Link</label>
-      <input id="contact_url" type="text"
-        inputmode="url" placeholder="loscuts.com">
-
-      <p class="hint">
-        Enter your website, such as loscuts.com.
-        We'll add https:// automatically if needed.
+      <p>
+        You can also simply enter your @username.
       </p>
-    </section>
+    </details>
+  </section>
 
-    <section class="panel">
-      <h2>Social Media</h2>
+  <section class="panel">
+    <h2>Haircut Portfolio</h2>
 
-      <p class="hint">
-        Enter your username or paste your full profile link.
-        CAPQ Pro will build the correct link.
-      </p>
+    <p class="hint">
+      Upload haircut photos straight from your phone.
+      Select multiple photos at once, or add more later.
+    </p>
 
-      <label for="instagram_url">Instagram</label>
-      <input id="instagram_url" type="text"
-        autocapitalize="off" autocomplete="off"
-        placeholder="@loscuts90">
+    <label class="upload-label" for="galleryFiles">
+      Add Haircut Photos
+    </label>
 
-      <p class="hint">
-        Example: @loscuts90 or instagram.com/loscuts90
-      </p>
-      <div class="link-preview" id="instagramPreview"></div>
+    <input class="file-input"
+           id="galleryFiles"
+           type="file"
+           accept="image/*"
+           multiple>
 
-      <label for="tiktok_url">TikTok</label>
-      <input id="tiktok_url" type="text"
-        autocapitalize="off" autocomplete="off"
-        placeholder="@loscuts90">
+    <p class="upload-note">
+      Maximum 10 MB per photo.
+      Your current photos stay saved unless you remove them.
+    </p>
 
-      <p class="hint">
-        Example: @loscuts90 or tiktok.com/@loscuts90
-      </p>
-      <div class="link-preview" id="tiktokPreview"></div>
+    <div id="gallery" class="gallery"></div>
+  </section>
 
-      <label for="youtube_url">YouTube</label>
-      <input id="youtube_url" type="text"
-        autocapitalize="off" autocomplete="off"
-        placeholder="@loscuts90">
+  <section class="panel">
+    <h2>Save Your Profile</h2>
 
-      <p class="hint">
-        Enter your YouTube handle or paste your channel link.
-      </p>
-      <div class="link-preview" id="youtubePreview"></div>
+    <p class="hint">
+      Press Save to upload new photos and
+      update your public profile.
+    </p>
 
-      <details class="help">
-        <summary>How do I copy my social media profile links?</summary>
-        <p>
-          <strong>Instagram:</strong>
-          Open your profile and use Share Profile
-          or Copy Link, if available.
-        </p>
-        <p>
-          <strong>TikTok:</strong>
-          Open Profile, tap Share Profile, then Copy Link.
-        </p>
-        <p>
-          <strong>YouTube:</strong>
-          Open your channel and use Share or Copy Link.
-        </p>
-        <p>You can also simply enter your @username.</p>
-      </details>
-    </section>
+    <div class="actions">
+      <button type="submit" id="saveButton">
+        Save Barber Connect
+      </button>
 
-    <section class="panel">
-      <h2>Haircut Portfolio</h2>
+      <button id="publicLink"
+              class="view-button"
+              type="button">
+        👁 View My Live Profile
+      </button>
+    </div>
+  </section>
 
-      <p class="hint">
-        Upload haircut photos straight from your phone.
-        Select multiple photos at once, or add more later.
-      </p>
-
-      <label class="upload-label" for="galleryFiles">
-        Add Haircut Photos
-      </label>
-
-      <input class="file-input" id="galleryFiles"
-        type="file" accept="image/*" multiple>
-
-      <p class="upload-note">
-        Maximum 10 MB per photo. Your current photos
-        stay saved unless you remove them.
-      </p>
-
-      <div id="gallery" class="gallery"></div>
-    </section>
-
-    <section class="panel">
-      <h2>Save Your Profile</h2>
-
-      <p class="hint">
-        Press Save to upload new photos and
-        update your public profile.
-      </p>
-
-      <div class="actions">
-        <button type="submit" id="saveButton">
-          Save Barber Connect
-        </button>
-
-        <a id="publicLink" class="secondary"
-          target="_blank"
-          rel="noopener noreferrer" hidden>
-          👁 View My Live Profile
-        </a>
-      </div>
-
-      <p class="save-note">
-        Save your changes first, then view your live page.
-      </p>
-    </section>
-
-  </form>
+</form>
 </main>
 
 <script type="module">
 import {createClient} from
 "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
-const SUPABASE_URL =
+const SUPABASE_URL=
   "https://nfazsevnpfmabsipkrrh.supabase.co";
 
-const SUPABASE_KEY =
+const SUPABASE_KEY=
   "sb_publishable_FtcxTtmcHvtyu3m2KJRjqA_3Nzkk2La";
 
-const supabase=createClient(SUPABASE_URL,SUPABASE_KEY);
+const supabase=createClient(
+  SUPABASE_URL,SUPABASE_KEY
+);
+
 const BUCKET="barber-connect";
 const $=id=>document.getElementById(id);
 
@@ -438,14 +558,17 @@ let galleryUrls=[];
 let pendingGallery=[];
 let busy=false;
 let savedSlug="";
-let avatarObjectUrl="";
-let coverObjectUrl="";
 
 const MAX_FILE=10*1024*1024;
 
 const fields=[
-  "display_name","bio","slug","booksy_url",
-  "contact_url","instagram_url","tiktok_url",
+  "display_name",
+  "bio",
+  "slug",
+  "booksy_url",
+  "contact_url",
+  "instagram_url",
+  "tiktok_url",
   "youtube_url"
 ];
 
@@ -464,6 +587,7 @@ function isHttpsUrl(value){
 
 function cleanUrl(value,label){
   value=value.trim();
+
   if(!value)return null;
 
   if(!/^https?:\/\//i.test(value)){
@@ -471,7 +595,9 @@ function cleanUrl(value,label){
   }
 
   if(!isHttpsUrl(value)){
-    throw Error(label+" must be a valid HTTPS link.");
+    throw Error(
+      label+" must be a valid HTTPS link."
+    );
   }
 
   return value;
@@ -479,6 +605,7 @@ function cleanUrl(value,label){
 
 function socialUrl(value,platform){
   value=value.trim();
+
   if(!value)return null;
 
   if(
@@ -492,7 +619,8 @@ function socialUrl(value,platform){
 
   if(!/^[a-zA-Z0-9._-]+$/.test(username)){
     throw Error(
-      "Enter a valid "+platform+" username or profile link."
+      "Enter a valid "+platform+
+      " username or profile link."
     );
   }
 
@@ -508,13 +636,13 @@ function socialUrl(value,platform){
 }
 
 function updateSocialPreviews(){
-  const platforms=[
+  const items=[
     ["instagram_url","Instagram","instagramPreview"],
     ["tiktok_url","TikTok","tiktokPreview"],
     ["youtube_url","YouTube","youtubePreview"]
   ];
 
-  for(const [field,platform,preview] of platforms){
+  for(const [field,platform,preview] of items){
     const value=$(field).value.trim();
 
     if(!value){
@@ -542,57 +670,63 @@ function previewImage(img,url){
   }
 }
 
-function publicProfileUrl(slug){
-  const url=new URL("barber-profile.html",location.href);
-  url.searchParams.set("barber",slug);
-  return url.href;
+// View Profile works with a saved profile name
+// or the name currently entered in the form.
+// It never uses a disabled or locked button.
+
+function getViewSlug(){
+  const typed=$("slug").value
+    .trim()
+    .toLowerCase();
+
+  return savedSlug || typed;
 }
 
 function updatePublicLink(){
-  const topLink=$("topViewProfile");
-  const bottomLink=$("publicLink");
-  const urlBox=$("profileUrl");
-  const hint=$("viewHint");
+  const slug=getViewSlug();
 
-  const currentSlug=$("slug").value.trim();
-  const validSavedSlug=
-    savedSlug && /^[a-z0-9-]+$/.test(savedSlug);
+  if(/^[a-z0-9-]+$/.test(slug)){
+    const url=new URL(
+      "barber-profile.html",
+      location.href
+    );
 
-  if(!validSavedSlug){
-    topLink.removeAttribute("href");
-    topLink.classList.add("disabled");
-    topLink.setAttribute("aria-disabled","true");
+    url.searchParams.set("barber",slug);
 
-    bottomLink.hidden=true;
-    bottomLink.removeAttribute("href");
+    $("profileLinkText").textContent=url.href;
+  }else{
+    $("profileLinkText").textContent=
+      "Enter a Public Profile Name to view your page.";
+  }
+}
 
-    urlBox.textContent="No public profile link saved yet.";
-    hint.textContent=
-      "Save your Barber Connect profile to activate "+
-      "your public page.";
+function viewMyProfile(){
+  const slug=getViewSlug();
+
+  if(!/^[a-z0-9-]+$/.test(slug)){
+    showStatus(
+      "Enter your Public Profile Name under "+
+      "Basic Information first.",
+      "error"
+    );
+    $("slug").focus();
     return;
   }
 
-  const url=publicProfileUrl(savedSlug);
-
-  topLink.href=url;
-  topLink.classList.remove("disabled");
-  topLink.removeAttribute("aria-disabled");
-
-  bottomLink.href=url;
-  bottomLink.hidden=false;
-
-  urlBox.textContent=url;
-
-  if(currentSlug!==savedSlug){
-    hint.textContent=
-      "You changed your public profile name. "+
-      "Save your changes to update the live link.";
-  }else{
-    hint.textContent=
-      "This opens your saved public Barber Connect page.";
-  }
+  // Same-tab navigation prevents popup blockers.
+  location.assign(
+    "barber-profile.html?barber="+
+    encodeURIComponent(slug)
+  );
 }
+
+$("topViewProfile").addEventListener(
+  "click",viewMyProfile
+);
+
+$("publicLink").addEventListener(
+  "click",viewMyProfile
+);
 
 function createPhotoCard(url,remove){
   const card=document.createElement("div");
@@ -606,6 +740,7 @@ function createPhotoCard(url,remove){
   const btn=document.createElement("button");
   btn.type="button";
   btn.textContent="Remove Photo";
+
   btn.addEventListener("click",remove);
 
   card.append(img,btn);
@@ -638,11 +773,15 @@ function renderGallery(){
 
 function checkFile(file){
   if(!file.type.startsWith("image/")){
-    throw Error("Please select image files only.");
+    throw Error(
+      "Please select image files only."
+    );
   }
 
   if(file.size>MAX_FILE){
-    throw Error(file.name+" is larger than 10 MB.");
+    throw Error(
+      file.name+" is larger than 10 MB."
+    );
   }
 }
 
@@ -674,7 +813,8 @@ async function uploadPhoto(file,folder){
   const ext=fileExt(file);
 
   const path=
-    barberId+"/"+folder+"/"+crypto.randomUUID()+"."+ext;
+    barberId+"/"+folder+"/"+
+    crypto.randomUUID()+"."+ext;
 
   const {error}=await supabase.storage
     .from(BUCKET)
@@ -704,14 +844,19 @@ function fillForm(profile,barber){
   currentAvatar=profile?.avatar_url||"";
   currentCover=profile?.cover_url||"";
 
+  savedSlug=profile?.slug||"";
+
   galleryUrls=Array.isArray(profile?.gallery_urls)
     ? [...profile.gallery_urls]
     : [];
 
-  savedSlug=profile?.slug||"";
+  previewImage(
+    $("avatarPreview"),currentAvatar
+  );
 
-  previewImage($("avatarPreview"),currentAvatar);
-  previewImage($("coverPreview"),currentCover);
+  previewImage(
+    $("coverPreview"),currentCover
+  );
 
   renderGallery();
   updateSocialPreviews();
@@ -787,6 +932,7 @@ async function loadProfile(){
 
   }catch(error){
     console.error(error);
+
     showStatus(
       "Unable to load your profile: "+error.message,
       "error"
@@ -807,94 +953,104 @@ function getFormData(){
     throw Error("Display name is required.");
   }
 
-  if(data.slug&&!/^[a-z0-9-]+$/.test(data.slug)){
+  if(
+    data.slug&&
+    !/^[a-z0-9-]+$/.test(data.slug)
+  ){
     throw Error(
       "Profile name can only contain lowercase "+
       "letters, numbers and hyphens."
     );
   }
 
-  data.booksy_url=cleanUrl(data.booksy_url,"Booksy");
-  data.contact_url=cleanUrl(data.contact_url,"Website");
-  data.instagram_url=socialUrl(data.instagram_url,"Instagram");
-  data.tiktok_url=socialUrl(data.tiktok_url,"TikTok");
-  data.youtube_url=socialUrl(data.youtube_url,"YouTube");
+  data.booksy_url=cleanUrl(
+    data.booksy_url,"Booksy"
+  );
+
+  data.contact_url=cleanUrl(
+    data.contact_url,"Website"
+  );
+
+  data.instagram_url=socialUrl(
+    data.instagram_url,"Instagram"
+  );
+
+  data.tiktok_url=socialUrl(
+    data.tiktok_url,"TikTok"
+  );
+
+  data.youtube_url=socialUrl(
+    data.youtube_url,"YouTube"
+  );
 
   if(!data.slug)data.slug=null;
 
   return data;
 }
 
-$("avatarFile").addEventListener("change",event=>{
-  const file=event.target.files?.[0];
-  if(!file)return;
+$("avatarFile").addEventListener(
+  "change",event=>{
+    const file=event.target.files?.[0];
 
-  try{
-    checkFile(file);
-    fileExt(file);
+    if(!file)return;
 
-    if(avatarObjectUrl){
-      URL.revokeObjectURL(avatarObjectUrl);
-    }
-
-    avatarObjectUrl=URL.createObjectURL(file);
-
-    previewImage(
-      $("avatarPreview"),
-      avatarObjectUrl
-    );
-
-  }catch(error){
-    showStatus(error.message,"error");
-    event.target.value="";
-  }
-});
-
-$("coverFile").addEventListener("change",event=>{
-  const file=event.target.files?.[0];
-  if(!file)return;
-
-  try{
-    checkFile(file);
-    fileExt(file);
-
-    if(coverObjectUrl){
-      URL.revokeObjectURL(coverObjectUrl);
-    }
-
-    coverObjectUrl=URL.createObjectURL(file);
-
-    previewImage(
-      $("coverPreview"),
-      coverObjectUrl
-    );
-
-  }catch(error){
-    showStatus(error.message,"error");
-    event.target.value="";
-  }
-});
-
-$("galleryFiles").addEventListener("change",event=>{
-  try{
-    for(const file of Array.from(event.target.files||[])){
+    try{
       checkFile(file);
-      fileExt(file);
 
-      pendingGallery.push({
-        file,
-        preview:URL.createObjectURL(file)
-      });
+      previewImage(
+        $("avatarPreview"),
+        URL.createObjectURL(file)
+      );
+    }catch(error){
+      showStatus(error.message,"error");
+      event.target.value="";
     }
-
-    renderGallery();
-    event.target.value="";
-
-  }catch(error){
-    showStatus(error.message,"error");
-    event.target.value="";
   }
-});
+);
+
+$("coverFile").addEventListener(
+  "change",event=>{
+    const file=event.target.files?.[0];
+
+    if(!file)return;
+
+    try{
+      checkFile(file);
+
+      previewImage(
+        $("coverPreview"),
+        URL.createObjectURL(file)
+      );
+    }catch(error){
+      showStatus(error.message,"error");
+      event.target.value="";
+    }
+  }
+);
+
+$("galleryFiles").addEventListener(
+  "change",event=>{
+    try{
+      for(const file of Array.from(
+        event.target.files||[]
+      )){
+        checkFile(file);
+
+        pendingGallery.push({
+          file,
+          preview:URL.createObjectURL(file)
+        });
+      }
+
+      renderGallery();
+      event.target.value="";
+
+    }catch(error){
+      showStatus(error.message,"error");
+      event.target.value="";
+    }
+  }
+);
 
 $("slug").addEventListener("input",()=>{
   $("slug").value=$("slug").value
@@ -910,145 +1066,142 @@ for(const field of [
   "youtube_url"
 ]){
   $(field).addEventListener(
-    "input",
-    updateSocialPreviews
+    "input",updateSocialPreviews
   );
 }
 
-form.addEventListener("submit",async event=>{
-  event.preventDefault();
+form.addEventListener(
+  "submit",async event=>{
+    event.preventDefault();
 
-  if(!barberId||busy)return;
+    if(!barberId||busy)return;
 
-  busy=true;
-  saveButton.disabled=true;
-  saveButton.textContent="Saving...";
+    busy=true;
+    saveButton.disabled=true;
+    saveButton.textContent="Saving...";
 
-  try{
-    const data=getFormData();
+    try{
+      const data=getFormData();
 
-    showStatus(
-      "Uploading photos and saving your profile..."
-    );
-
-    let avatar=currentAvatar;
-    let cover=currentCover;
-
-    const avatarFile=$("avatarFile").files?.[0];
-    const coverFile=$("coverFile").files?.[0];
-
-    if(avatarFile){
-      avatar=await uploadPhoto(avatarFile,"avatar");
-    }
-
-    if(coverFile){
-      cover=await uploadPhoto(coverFile,"cover");
-    }
-
-    const newGallery=[...galleryUrls];
-
-    for(let i=0;i<pendingGallery.length;i++){
       showStatus(
-        "Uploading haircut photo "+
-        (i+1)+" of "+pendingGallery.length+"..."
+        "Uploading photos and saving your profile..."
       );
 
-      newGallery.push(
-        await uploadPhoto(
-          pendingGallery[i].file,
-          "gallery"
-        )
+      let avatar=currentAvatar;
+      let cover=currentCover;
+
+      const avatarFile=
+        $("avatarFile").files?.[0];
+
+      const coverFile=
+        $("coverFile").files?.[0];
+
+      if(avatarFile){
+        avatar=await uploadPhoto(
+          avatarFile,"avatar"
+        );
+      }
+
+      if(coverFile){
+        cover=await uploadPhoto(
+          coverFile,"cover"
+        );
+      }
+
+      const newGallery=[...galleryUrls];
+
+      for(let i=0;i<pendingGallery.length;i++){
+        showStatus(
+          "Uploading haircut photo "+
+          (i+1)+" of "+
+          pendingGallery.length+"..."
+        );
+
+        newGallery.push(
+          await uploadPhoto(
+            pendingGallery[i].file,
+            "gallery"
+          )
+        );
+      }
+
+      data.avatar_url=avatar||null;
+      data.cover_url=cover||null;
+      data.gallery_urls=newGallery;
+
+      let result;
+
+      if(profileExists){
+        result=await supabase
+          .from("barber_connect_profiles")
+          .update(data)
+          .eq("barber_id",barberId)
+          .select("barber_id")
+          .single();
+      }else{
+        result=await supabase
+          .from("barber_connect_profiles")
+          .insert({
+            barber_id:barberId,
+            ...data
+          })
+          .select("barber_id")
+          .single();
+      }
+
+      if(result.error)throw result.error;
+
+      profileExists=true;
+      currentAvatar=avatar;
+      currentCover=cover;
+      galleryUrls=newGallery;
+      savedSlug=data.slug||"";
+
+      pendingGallery.forEach(item=>{
+        URL.revokeObjectURL(item.preview);
+      });
+
+      pendingGallery=[];
+
+      $("avatarFile").value="";
+      $("coverFile").value="";
+
+      previewImage(
+        $("avatarPreview"),currentAvatar
       );
+
+      previewImage(
+        $("coverPreview"),currentCover
+      );
+
+      renderGallery();
+      updatePublicLink();
+
+      showStatus(
+        "Your Barber Connect profile and photos "+
+        "were saved successfully!",
+        "success"
+      );
+
+    }catch(error){
+      console.error(error);
+
+      showStatus(
+        "Unable to save: "+error.message,
+        "error"
+      );
+
+    }finally{
+      busy=false;
+      saveButton.disabled=false;
+      saveButton.textContent=
+        "Save Barber Connect";
     }
-
-    data.avatar_url=avatar||null;
-    data.cover_url=cover||null;
-    data.gallery_urls=newGallery;
-
-    let result;
-
-    if(profileExists){
-      result=await supabase
-        .from("barber_connect_profiles")
-        .update(data)
-        .eq("barber_id",barberId)
-        .select("barber_id")
-        .single();
-
-    }else{
-      result=await supabase
-        .from("barber_connect_profiles")
-        .insert({
-          barber_id:barberId,
-          ...data
-        })
-        .select("barber_id")
-        .single();
-    }
-
-    if(result.error)throw result.error;
-
-    profileExists=true;
-    currentAvatar=avatar;
-    currentCover=cover;
-    galleryUrls=newGallery;
-    savedSlug=data.slug||"";
-
-    pendingGallery.forEach(item=>{
-      URL.revokeObjectURL(item.preview);
-    });
-
-    pendingGallery=[];
-
-    $("avatarFile").value="";
-    $("coverFile").value="";
-
-    if(avatarObjectUrl){
-      URL.revokeObjectURL(avatarObjectUrl);
-      avatarObjectUrl="";
-    }
-
-    if(coverObjectUrl){
-      URL.revokeObjectURL(coverObjectUrl);
-      coverObjectUrl="";
-    }
-
-    previewImage(
-      $("avatarPreview"),
-      currentAvatar
-    );
-
-    previewImage(
-      $("coverPreview"),
-      currentCover
-    );
-
-    renderGallery();
-    updatePublicLink();
-
-    showStatus(
-      "Your Barber Connect profile and photos "+
-      "were saved successfully! "+
-      "You can now view your live profile.",
-      "success"
-    );
-
-  }catch(error){
-    console.error(error);
-
-    showStatus(
-      "Unable to save: "+error.message,
-      "error"
-    );
-
-  }finally{
-    busy=false;
-    saveButton.disabled=false;
-    saveButton.textContent="Save Barber Connect";
   }
-});
+);
 
 loadProfile();
 </script>
+
 </body>
 </html>
