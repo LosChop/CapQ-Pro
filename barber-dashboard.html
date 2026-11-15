@@ -18,7 +18,9 @@
   --white:#F7F7F4;
   --muted:#A9ADB5;
 }
+
 *{box-sizing:border-box}
+
 body{
   margin:0;
   background:var(--black);
@@ -26,11 +28,13 @@ body{
   font-family:Arial,Helvetica,sans-serif;
   line-height:1.5;
 }
+
 main{
   max-width:900px;
   margin:auto;
   padding:25px 18px 65px;
 }
+
 header{
   display:flex;
   justify-content:space-between;
@@ -39,6 +43,7 @@ header{
   padding-bottom:20px;
   border-bottom:1px solid #393c42;
 }
+
 .brand{
   display:flex;
   align-items:center;
@@ -46,6 +51,7 @@ header{
   color:white;
   text-decoration:none;
 }
+
 .brand-icon{
   width:52px;
   height:52px;
@@ -58,13 +64,17 @@ header{
   border:1px solid #786434;
   border-radius:14px;
 }
+
 .wordmark{width:145px;max-width:100%}
+
 .subtitle{
   font-size:9px;
   letter-spacing:2px;
   color:var(--muted);
 }
+
 button{font:inherit;cursor:pointer}
+
 .signout,.secondary{
   background:var(--charcoal);
   color:white;
@@ -72,12 +82,15 @@ button{font:inherit;cursor:pointer}
   border-radius:9px;
   padding:10px 12px;
 }
+
 h1{
   font-size:clamp(26px,5vw,36px);
   margin:28px 0 5px;
 }
+
 h2{font-size:23px;margin:0}
 .muted{color:var(--muted);font-size:14px}
+
 .message{
   min-height:20px;
   color:var(--gold);
@@ -85,27 +98,33 @@ h2{font-size:23px;margin:0}
   font-size:13px;
   white-space:pre-wrap;
 }
+
 .stats{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:12px;
   margin:25px 0;
 }
+
 .stat,.panel{
   background:#1c1f24;
   border:1px solid #383c42;
   border-radius:15px;
   padding:20px;
 }
+
 .stat small{color:var(--muted);display:block}
+
 .stat strong{
   display:block;
   font-size:34px;
   color:var(--gold);
   margin-top:6px;
 }
+
 .stat.green strong{color:#66d8a7}
 .section{margin-top:30px}
+
 .section-head{
   display:flex;
   align-items:center;
@@ -113,6 +132,7 @@ h2{font-size:23px;margin:0}
   gap:12px;
   margin-bottom:15px;
 }
+
 .pill{
   background:#123e30;
   color:#7ff0c3;
@@ -120,6 +140,7 @@ h2{font-size:23px;margin:0}
   padding:6px 10px;
   font-size:11px;
 }
+
 .card{
   padding:18px;
   background:#24272c;
@@ -127,18 +148,22 @@ h2{font-size:23px;margin:0}
   border-radius:12px;
   margin-top:12px;
 }
+
 .card-head{
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:12px;
 }
+
 .card strong{font-size:18px}
+
 .card p{
   margin:7px 0 0;
   color:var(--muted);
   font-size:13px;
 }
+
 .tag{
   color:#e8c96e;
   background:#40361e;
@@ -146,21 +171,25 @@ h2{font-size:23px;margin:0}
   border-radius:20px;
   font-size:11px;
 }
+
 .tag.accepted{
   color:#7ff0c3;
   background:#123e30;
 }
+
 .wait-label{
   display:block;
   margin:15px 0 9px;
   font-size:13px;
   font-weight:bold;
 }
+
 .wait-options{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:8px;
 }
+
 .wait-btn{
   background:#353a41;
   color:white;
@@ -169,12 +198,14 @@ h2{font-size:23px;margin:0}
   padding:11px 6px;
   font-size:13px;
 }
+
 .wait-btn.selected{
   background:var(--gold);
   color:#111;
   border-color:var(--gold);
   font-weight:bold;
 }
+
 .primary{
   display:block;
   width:100%;
@@ -186,6 +217,7 @@ h2{font-size:23px;margin:0}
   font-weight:bold;
   margin-top:12px;
 }
+
 .empty{
   padding:22px;
   border:1px dashed #45494f;
@@ -194,11 +226,14 @@ h2{font-size:23px;margin:0}
   text-align:center;
   font-size:14px;
 }
+
 .connect{
   border-color:#7d693a;
   background:linear-gradient(135deg,#27251e,#1c1f24);
 }
+
 .connect h2{color:var(--gold)}
+
 .connect-link{
   display:inline-block;
   background:var(--gold);
@@ -209,12 +244,14 @@ h2{font-size:23px;margin:0}
   padding:12px 17px;
   margin-top:12px;
 }
+
 .nav{
   display:flex;
   gap:10px;
   flex-wrap:wrap;
   margin-top:35px;
 }
+
 .nav a{
   color:white;
   text-decoration:none;
@@ -224,11 +261,13 @@ h2{font-size:23px;margin:0}
   padding:12px 15px;
   font-size:13px;
 }
+
 .note{
   margin-top:25px;
   font-size:12px;
   color:var(--muted);
 }
+
 .account-diagnostic{
   background:#24272c;
   border:1px solid #7d693a;
@@ -238,15 +277,19 @@ h2{font-size:23px;margin:0}
   font-size:13px;
   overflow-wrap:anywhere;
 }
+
 .account-diagnostic strong{color:var(--gold)}
+
 .account-diagnostic code{
   display:block;
   margin:8px 0;
   color:#fff;
   overflow-wrap:anywhere;
 }
+
 [hidden]{display:none!important}
 button:disabled{opacity:.55;cursor:wait}
+
 @media(max-width:550px){
   .stat{padding:14px}
   .stat strong{font-size:28px}
@@ -346,9 +389,10 @@ button:disabled{opacity:.55;cursor:wait}
       Booksy link, social media, and
       shareable barber profile.
     </p>
+
     <a
       class="connect-link"
-      href="barber-connect.html"
+      href="barber-profile-edit.html"
     >
       Manage My Barber Connect
     </a>
